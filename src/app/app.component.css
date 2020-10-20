@@ -1,0 +1,28 @@
+:host{
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: max-content max-content auto max-content;
+  grid-template-areas:
+    "header"
+    "navbar"
+    "content"
+    "footer";
+}
+app-header {
+  grid-area: header;
+}
+
+app-navbar {
+  grid-area: navbar;
+}
+
+/* app-sidebar {
+  grid-area: sidebar;
+} */
+
+/* app-footer {
+  grid-area: footer;
+} */

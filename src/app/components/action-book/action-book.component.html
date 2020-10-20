@@ -1,0 +1,63 @@
+<div class="modal">
+  <span class="close-icon" (click)= "closeModal.emit()"
+    ><em style="font-size: 24px" class="fa">&#xf00d;</em></span
+  >
+  <div class="modal-body">
+    <h2 style="text-align: center;">{{ editNew }} Book</h2>
+    <form [formGroup]= "bookForm" novalidate (ngSubmit)= "onSubmit(bookForm)">
+      <div class="row">
+        <div class="column">
+          <label for="isbn">ISBN</label>
+          <input type="text" formControlName="id" id="isbn" readonly />
+        </div>
+        <div class="column">
+          <label for="title">Title</label>
+          <input type="text" formControlName="title" id="title"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label for="subtitle">Subtitle</label>
+          <input type="text" formControlName="subtitle" id="subtitle"/>
+        </div>
+        <div class="column">
+          <label for="author">Author</label>
+          <input type="text" formControlName="author" id="author"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label for="published">Published</label>
+          <input type="text" formControlName="published" id="published" />
+        </div>
+        <div class="column">
+          <label for="publisher">Publisher</label>
+          <input type="text" formControlName="publisher" id="publisher"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label for="page">Pages</label>
+          <input type="text" formControlName="pages" id="page"/>
+        </div>
+        <div class="column">
+          <label for="description">Description</label>
+          <input type="text" formControlName="description" id="description"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label for="website">Website</label>
+          <input type="text" formControlName="website" id="website"/>
+        </div>
+      </div>
+
+      <button class="custom_cancel_button" (click)= "closeModal.emit()">Cancel</button>
+      <button type="submit" class="custom_btn">Save</button>
+    </form>
+  </div>
+</div>

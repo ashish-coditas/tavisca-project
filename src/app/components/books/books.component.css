@@ -1,0 +1,44 @@
+.table-class {
+  padding: 2px 8px;
+
+}
+
+#user {
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+#user tr {
+  padding: 8px;
+  border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+
+
+#user th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+
+.actionDelete:hover, .actionEdit:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.actionDelete{
+  color: red;
+
+}
+.actionEdit{
+  color: blue;
+}
+
+
+.text-end{
+  margin: 20px;
+}
+
+.add-button{
+  float:right;
+}

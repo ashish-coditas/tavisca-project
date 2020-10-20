@@ -1,0 +1,14 @@
+<div class="header">
+  <a>{{'BOOK_HEADER.TITLE' | translate}}</a>
+  <div class="header-right">
+    <div class="space-between">
+      <label for="dark" class="toggle-switch">
+      <input type="checkbox" name="dark" [(ngModel)]= "dark" tabindex="1" id="dark"/>
+      <span class="slider round"></span>
+    </label>
+  </div>
+   <div class="space-between">
+     <button type="button" (click)= "onLogout()"> Log out
+    </button>
+  </div>
+</div>

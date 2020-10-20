@@ -1,0 +1,28 @@
+  <div class="table-class">
+    <div class="text-end">
+      <span>
+        <strong>{{'TABLE_DETAILS.TABLE_COUNT' | translate}} {{ this.bookData?.length }}</strong>
+       </span>
+       <span class="add-button"><button class= "btn" (click)= "addBook()">Add</button></span>
+    </div>
+
+  <table id="user">
+    <tr>
+      <th *ngFor="let col of columns" title="{{col}}" >
+       {{ col }}
+      </th>
+    </tr>
+    <tr *ngFor= "let data of bookData; let i = index">
+      <td *ngFor="let col of index" style="cursor: pointer" title="{{ data[col] }}">
+        {{ data[col] }}
+      </td>
+      <td>
+        <span class="actionEdit" (click)= "onEdit(data.id)">Edit</span>
+        <span>&nbsp;</span>
+        <span class="actionDelete" (click)= "onDelete(data.id)">Delete</span>
+      </td>
+    </tr>
+  </table>
+  <app-action-book *ngIf= "openFormModal" [editData]= "editFormData" (closeModal)= "closeFormModal()" (getData)= "getData()"></app-action-book>
+</div>
+

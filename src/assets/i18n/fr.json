@@ -1,0 +1,12 @@
+{
+  "BOOK_HEADER": {
+    "TITLE": "Bienvenue sur l'étagère à livres",
+    "DARK_THEME": "Activer le thème sombre"
+  },
+  "BOOK_FOOTER":{
+    "FOOTER_TEXT":"Footer"
+  },
+  "BOOK_DATA":{
+    "FOOTER_TEXT":"Footer"
+  }
+}

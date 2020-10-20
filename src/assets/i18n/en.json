@@ -1,0 +1,18 @@
+{
+  "BOOK_HEADER": {
+    "TITLE": "Welcome to book shelf",
+    "DARK_THEME": "Enable dark theme"
+  },
+  "BOOK_FOOTER":{
+    "FOOTER_TEXT":"Footer"
+  },
+  "BOOK_DATA":{
+    "FOOTER_TEXT":"Footer"
+  },
+  "TABLE_DETAILS":{
+    "TABLE_COUNT":"Total Count : "
+  },
+  "FOOTER_DETAILS":{
+    "FOOTER_CONTENT":"ashish.kapri@coditas.com"
+  }
+}
