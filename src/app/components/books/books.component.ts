@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
       { key: 'HEADER_TEXT_5' }
     ];
 
-  index = ['title', 'author', 'website', 'description'];
+  index = ['title', 'author', 'website', 'publisher'];
   editFormData: any;
   openFormModal = false;
   bookData: any = [];

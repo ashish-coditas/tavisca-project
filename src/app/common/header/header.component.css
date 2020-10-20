@@ -1,3 +1,7 @@
+@import '../../../assets/theme/dark.css';
+@import '../../../assets/theme/base.css';
+@import '../../../assets/theme/default.css';
+
 .header-right {
   float: right;
   display: flex;
@@ -5,7 +9,7 @@
 
 .header {
   overflow: hidden;
-  background-color: rgb(51, 103, 215);
+  background-color: var(--header-background);
   padding: 20px 10px;
   color: #fff;
 }
@@ -61,7 +65,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -72,4 +75,12 @@ input:checked + .slider:before {
 
 .space-between{
   margin: 0 10px;
+}
+
+.logout{
+  border: none;
+    background: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }

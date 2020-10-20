@@ -1,43 +1,39 @@
-<div class="table-class">
+<!-- <div class="table-class"> -->
   <div class="text-end">
-    <span>
-      <strong
-        >{{ 'TABLE_DETAILS.TABLE_COUNT' | translate }}
-        {{ this.bookData?.length }}</strong
-      >
+    <span class="text-color">
+      <strong>{{ 'TABLE_DETAILS.TABLE_COUNT' | translate }}
+        {{ this.bookData?.length }}</strong>
     </span>
-    <span class="add-button"
-      ><button class="btn" (click)="addBook()">
-        {{ 'TABLE_DETAILS.ACTIONS_BUTTON.ADD' | translate }}
+    <span class="add-button" (click)="addBook()"
+      ><button class="btn" title="Add">
+        <i class="fa fa-plus" aria-hidden="true"></i>
       </button></span
     >
   </div>
 
-  <table id="user">
-    <tr>
-      <th *ngFor="let col of columns" title="{{ col }}">
-        {{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}
-      </th>
-    </tr>
-    <tr *ngFor="let data of bookData; let i = index">
-      <td
-        *ngFor="let col of index"
-        style="cursor: pointer"
-        title="{{ data[col] }}"
-      >
-        {{ data[col] }}
-      </td>
-      <td>
-        <span class="actionEdit" (click)="onEdit(data.id)">{{
-          'TABLE_DETAILS.ACTIONS_BUTTON.EDIT' | translate
-        }}</span>
-        <span>&nbsp;</span>
-        <span class="actionDelete" (click)="onDelete(data.id)">{{
-          'TABLE_DETAILS.ACTIONS_BUTTON.DELETE' | translate
-        }}</span>
-      </td>
-    </tr>
-  </table>
+  <div class= "table-class">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let col of columns" title="{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}"> 
+          <div>{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}</div>  
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor= "let data of bookData">
+          <td *ngFor="let col of index" style="cursor: pointer"  title="{{ data[col] }}">
+          <div> {{ data[col] }}</div>
+          </td>
+          <td>
+            <span class="actionEdit" (click)="onEdit(data.id)" title="Edit"><i class="fa fa-edit" aria-hidden="true"></i></span>
+            <span class="actionDelete" (click)="onDelete(data.id)" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
   <app-action-book
     *ngIf="openFormModal"
     [editData]="editFormData"
@@ -45,16 +41,5 @@
     (getData)="getData()"
   ></app-action-book>
 
-  <!-- <my-modal-component
-    *ngIf="deleteForm"
-    headerText="{{ 'DELETE_FORM.HEADER_TEXT' | translate }}"
-    bodyText="{{ 'DELETE_FORM.BODY_TEXT' | translate }}"
-    buttonTextCancel="{{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}"
-    buttonTextDelete="{{ 'DELETE_FORM.DELETE_BUTTON' | translate }}"
-    (click) = "closeModal($event)" (click) ="deleteBook($event)"
-    
-  >
-  </my-modal-component> -->
-
   <app-delete *ngIf= "deleteForm" (closeModal)="closeModal()" (deleteModal)="deleteBook()"></app-delete>
-</div>
+<!-- </div> -->

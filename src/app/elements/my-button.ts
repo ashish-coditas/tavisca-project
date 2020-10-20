@@ -14,11 +14,12 @@ export class MyButtonComponent extends LitElement {
     .Login , .Register {
       background-color: #4CAF50;
       color: white;
-      padding: 15px;
-      margin: 1rem 1rem 0 7rem;
+      padding: 16px 20px;
+      margin: 8px 0;
       border: none;
       cursor: pointer;
-      width: 15%;
+      width: 100%;
+      opacity: 0.9;
     }
 
     .Register{
@@ -56,6 +57,6 @@ export class MyButtonComponent extends LitElement {
   }
 
   _handleClick(e) {
-    console.log('eeee', e);
+    console.log('eeee');
   }
 }

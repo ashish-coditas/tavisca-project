@@ -2,6 +2,13 @@
   --theme-background: #222226;
   --theme-color: rgba(255,255,255,.75);
   background-color: #222226;
+  --label-text-color: black;
+  --tr-nth-even : whitesmoke;
+  --text-color: lightseagreen;
+  --header-background: midnightblue;
+  --footer-background: snow;
+  --table-header-background: crimson;
+  transition: all ease-in-out 400ms;
 }
 
 

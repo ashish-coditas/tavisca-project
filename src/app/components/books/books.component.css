@@ -1,44 +1,80 @@
+@import '../../../assets/theme/dark.css';
+@import '../../../assets/theme/base.css';
+@import '../../../assets/theme/default.css';
+
 .table-class {
-  padding: 2px 8px;
-
+  margin: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-
-#user {
+table {
   border-collapse: collapse;
-  /* width: 100%; */
+  width: 100%;
+  color:black;
 }
 
-#user tr {
-  padding: 8px;
-  border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
+tr:nth-of-type(odd) {
+  background: #eee;
 }
 
+tr:nth-of-type(even) {
+  background: var(--tr-nth-even);
+}
 
-#user th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+td > div {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90%;
+}
+
+th {
+  background: var(--table-header-background);
+  color: white;
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
   text-align: left;
+  font-size: 15px;
+  width: 15%;
 }
 
+table > td {
+  table-layout: fixed;
+  width: 50px;
+  overflow: hidden;
+}
 
-.actionDelete:hover, .actionEdit:hover{
+.actionDelete:hover,
+.actionEdit:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.actionDelete{
+.actionDelete {
   color: red;
-
-}
-.actionEdit{
-  color: blue;
-}
-
-
-.text-end{
   margin: 20px;
 }
 
-.add-button{
-  float:right;
+.actionEdit {
+  color: blue;
+}
+
+.text-end {
+  margin: 20px;
+}
+
+.add-button , .btn {
+  float: right;
+  border: none;
+  background: turquoise;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.text-color{
+  color: var(--text-color);
 }

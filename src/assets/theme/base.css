@@ -2,4 +2,8 @@ html , body {
   background-color: var(--theme-background);
   color: var(--theme-color);
   transition: all ease-in-out 400ms;
+  color: var(--text-color);
+  background-color: var(--header-background);
+  background-color: var(--footer-background);
+  background-color: var(--table-header-background);
 }
