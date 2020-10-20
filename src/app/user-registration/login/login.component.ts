@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { LogIn } from '../../store/actions/user-actions';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import '../../elements/my-button';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   getState: Observable<any>;
   errorResponse: any = '';
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,

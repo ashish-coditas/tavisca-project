@@ -1,1 +1,14 @@
-<p>delete works!</p>
+<div class="modal">
+    <span class="close-icon"><em style="font-size: 24px" class="fa"></em></span>
+    <div class="modal-body">
+      <h2 style="text-align: center;">{{ 'DELETE_FORM.HEADER_TEXT' | translate }}</h2>
+      <div class="body-text">
+        {{ 'DELETE_FORM.BODY_TEXT' | translate }}
+        </div>
+
+        <div class="button-align">
+        <button class="custom_cancel_button" (click)= "closeModal.next()"> {{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}</button>
+        <button class= "custom_delete_button" (click)= "deleteModal.next()"> {{ 'DELETE_FORM.DELETE_BUTTON' | translate }}</button>
+      </div>
+    </div>
+  </div>

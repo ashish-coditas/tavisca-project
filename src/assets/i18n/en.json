@@ -10,9 +10,71 @@
     "FOOTER_TEXT":"Footer"
   },
   "TABLE_DETAILS":{
-    "TABLE_COUNT":"Total Count : "
+    "TABLE_COUNT":"Total Count : ",
+    "TABLE_HEADER":{
+      "HEADER_TEXT_1":"Title",
+      "HEADER_TEXT_2":"Author",
+      "HEADER_TEXT_3":"Website",
+      "HEADER_TEXT_4":"Description",
+      "HEADER_TEXT_5":"Actions"
+    },
+    "ACTIONS_BUTTON":{
+      "EDIT": "Edit",
+      "DELETE": "Delete",
+      "ADD": "Add"
+    }
   },
   "FOOTER_DETAILS":{
-    "FOOTER_CONTENT":"ashish.kapri@coditas.com"
+    "FOOTER_CONTENT":"ashish.kapri@coditas.com",
+    "FOOTER_AUTHOR": "Author",
+    "FOOTER_AUTHOR_NAME": "Ashish Kapri"
+  },
+  "LOGIN_DETAILS":{
+    "LOGIN":"Login",
+    "LOGIN_EMAIL" :"Email",
+    "LOGIN_PASSWORD":"Password",
+    "REGISTER":"Register",
+    "ERROR":{
+      "PASSWORD_REQUIRED":"Password is required",
+      "EMAIL_REQUIRED":"Email is required"
+    }
+  },
+  "REGISTER_DETAILS":{
+    "LAST_NAME" :"Last name",
+    "FIRST_NAME":"First name",
+    "REGISTER":"Sign-up",
+    "REGISTER_EMAIL" :"Email",
+    "REGISTER_PASSWORD":"Password",
+    "CANCEL": "Cancel",
+    "ERROR":{
+      "PASSWORD_REQUIRED":"Password is required",
+      "EMAIL_REQUIRED":"Email is required",
+      "FIRST_NAME_REQUIRED":"First name is required",
+      "LAST_NAME_REQUIRED":"Last name is required",
+      "PASSWORD_LENGTH":"Password must be at least 6 characters"
+    }
+  },
+  "BOOK_FORM_MODAL":{
+    "BOOK_ISBN":"ISBN",
+    "BOOK_TITLE":"Title",
+    "BOOK_SUBTITLE":"Subtitle",
+    "BOOK_AUTHOR":"Author",
+    "BOOK_PUBLISHED":"Published",
+    "BOOK_PUBLISHER":"Publisher",
+    "BOOK_PAGES":"Pages",
+    "BOOK_DESCRIPTION":"Description",
+    "BOOK_WEBSITE":"Website",
+    "CANCEL_BUTTON": "Cancel",
+    "SAVE_BUTTON": "Save",
+    "BOOK_LABEL": "Book"
+  },
+  "LOGOUT":{
+    "LOGOUT_TITLE": "Logout"
+  },
+  "DELETE_FORM":{
+    "HEADER_TEXT": "Delete Book",
+    "BODY_TEXT": "Are you sure you want to delete this book?",
+    "CANCEL_BUTTON":"Cancel",
+    "DELETE_BUTTON": "Delete"
   }
 }

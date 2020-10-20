@@ -1,8 +1,8 @@
 <section class="container">
-  <h2>Register</h2>
-  <form [formGroup]="registerForm" (ngSubmit)= "onSubmit()">
+  <h2>{{'REGISTER_DETAILS.REGISTER' | translate}}</h2>
+  <form [formGroup]= "registerForm">
     <div>
-      <label for="firstName"><strong>First Name</strong></label>
+      <label for="firstName"><strong>{{'REGISTER_DETAILS.FIRST_NAME' | translate}}</strong></label>
       <input
       id="firstName"
         type="text"
@@ -10,11 +10,11 @@
         [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
       />
       <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        <div *ngIf="f.firstName.errors.required">{{'REGISTER_DETAILS.FIRST_NAME' | translate}}</div>
       </div>
     </div>
     <div>
-      <label for="lastName"><strong>Last Name</strong></label>
+      <label for="lastName"><strong>{{'REGISTER_DETAILS.LAST_NAME' | translate}}</strong></label>
       <input
       id="lastName"
         type="text"
@@ -22,11 +22,11 @@
         [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
       />
       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        <div *ngIf="f.lastName.errors.required">{{'REGISTER_DETAILS.ERROR.LAST_NAME_REQUIRED' | translate}}</div>
       </div>
     </div>
     <div>
-      <label for="email"><strong>Email</strong></label>
+      <label for="email"><strong>{{'REGISTER_DETAILS.REGISTER_EMAIL' | translate}}</strong></label>
       <input
       id="email"
         type="text"
@@ -35,11 +35,11 @@
         [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
       />
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.required">{{'REGISTER_DETAILS.ERROR.EMAIL_REQUIRED' | translate}}</div>
       </div>
     </div>
     <div>
-      <label for="password"><strong>Password</strong></label>
+      <label for="password"><strong>{{'REGISTER_DETAILS.REGISTER_PASSWORD' | translate}}</strong></label>
       <input
       id="password"
         type="password"
@@ -48,17 +48,15 @@
         [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
       />
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.required">{{'REGISTER_DETAILS.ERROR.PASSWORD_REQUIRED' | translate}}</div>
         <div *ngIf="f.password.errors.minlength">
-          Password must be at least 6 characters
+          {{'REGISTER_DETAILS.ERROR.PASSWORD_LENGTH' | translate}}
         </div>
       </div>
     </div>
     <div>
-      <button [disabled]="loading" class="registerbtn">
-        Register
-      </button>
-      <button class="cancelbtn" routerLink="/login">Cancel</button>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.REGISTER' | translate}}" (click)= "onSubmit()"></my-button-component>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.CANCEL' | translate}}" routerLink="/login"></my-button-component>
     </div>
   </form>
 </section>

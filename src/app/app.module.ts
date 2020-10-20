@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DeleteComponent } from './components/delete/delete.component';
 import { BookService } from './service/book-service/book.service';
 import { LayoutModule } from './common/layout.module';
 import { BookModule } from './components/book.module';
@@ -29,7 +27,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    DeleteComponent,
     LoginComponent,
     SignUpComponent,
   ],
@@ -60,5 +57,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   providers: [BookService, ThemeService],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

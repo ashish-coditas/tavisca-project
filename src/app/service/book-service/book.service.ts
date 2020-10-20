@@ -24,7 +24,7 @@ export class BookService {
   }
 
   deleteBookById(id) {
-    return this.httpCLient.delete(environment.hostURL + id);
+    return this.httpCLient.delete(environment.hostURL + '/' + id);
   }
 
   addBookData(data) {

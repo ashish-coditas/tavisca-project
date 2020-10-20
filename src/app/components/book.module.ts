@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BooksComponent } from './books/books.component';
 import { BookRoutingModule } from './book-routing.module';
@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ActionBookComponent } from './action-book/action-book.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DeleteComponent } from './delete/delete.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -16,7 +17,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     BooksComponent,
-    ActionBookComponent
+    ActionBookComponent,
+    DeleteComponent
   ],
   imports: [
   CommonModule,
@@ -32,8 +34,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     })
   ],
-  exports: [
-    // ActionBookComponent
-  ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class BookModule { }
