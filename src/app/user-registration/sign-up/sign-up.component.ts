@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
-import { Observable } from 'rxjs';
-import { AppState, selectAuthState } from '../../store/state/app-state';
 import { Store } from '@ngrx/store';
 import { SignUp } from '../../store/actions/user-actions';
-import { ToastrService } from 'ngx-toastr';
+import { AppState } from '../../store/state/app-state';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,28 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
-  loading = false;
-  submitted = false;
+  submitted:boolean = false;
   user: User = new User();
-  getState: Observable<any>;
-  errorResponse: any;
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,
-    private toastService: ToastrService
 
   ) {
-    this.getState = this.store.select(selectAuthState);
-    this.getState.subscribe((state) => {
-      this.errorResponse = state.errorMessage;
-      if (this.errorResponse !== null) {
-        if (this.errorResponse === 'Success') {
-          this.toastService.success('Registered Successfully');
-        } else {
-          this.toastService.info(this.errorResponse.error);
-        }
-      }
-    });
   }
 
   ngOnInit(): void {
@@ -58,8 +41,6 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-
-    this.loading = true;
     const payload = {
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,

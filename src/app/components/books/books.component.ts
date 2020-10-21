@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../service/book-service/book.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books',
@@ -18,60 +19,64 @@ export class BooksComponent implements OnInit {
 
   index = ['title', 'author', 'website', 'publisher'];
   editFormData: any;
-  openFormModal = false;
-  bookData: any = [];
+  openFormModal: boolean = false;
+  bookData: any;
 
   deleteForm: boolean = false;
-  deleteId: any;
-  constructor(private bookService: BookService) {}
+  deleteId: string;
+  userAccessToken: any;
+  constructor(
+    private bookService: BookService,
+    private toastrService: ToastrService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getBookData();
   }
-  getUsers() {
+
+  getBookData(): void {
     this.bookService.getBook().subscribe((data) => {
       this.bookData = data;
     });
   }
 
-  onEdit(id) {
+  onEdit(id: string): void {
     this.bookService.getBookById(id).subscribe((data) => {
       this.editFormData = data;
       this.openFormModal = true;
     });
   }
 
-  onDelete(id) {
+  onDelete(id: string): void {
     this.deleteForm = true;
     this.deleteId = id;
-    // this.bookService.deleteBookById(id).subscribe((data) => {
-    //   this.bookData = data;
-    // });
   }
 
-  deleteBook() {
+  deleteBook(): void {
     this.bookService.deleteBookById(this.deleteId).subscribe(() => {
       this.deleteForm = false;
       this.deleteId = '';
-      this.getUsers();
+      this.toastrService.info('Deleted Successfully');
+      this.getBookData();
     });
   }
 
-  addBook() {
+  addBook(): void {
     this.openFormModal = true;
   }
 
-  closeFormModal() {
+  closeFormModal(): void {
     this.openFormModal = false;
     this.editFormData = [];
   }
 
-  closeModal() {
+  closeModal(): void {
     this.deleteForm = false;
     this.deleteId = '';
   }
 
-  getData() {
-    this.getUsers();
+  getData(): void {
+    this.getBookData();
   }
 }

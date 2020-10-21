@@ -8,6 +8,7 @@
     ],
     "module": "commonjs",
     "allowJs": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": [
     "src/test.ts",

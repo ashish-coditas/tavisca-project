@@ -9,7 +9,6 @@ export enum UserActionTypes {
   SIGNUP_SUCCESS = '[User] Signup Success',
   SIGNUP_FAILURE = '[User] Signup Failure',
   LOGOUT = '[User] Logout',
-  GET_STATUS = '[User] GetStatus'
 }
 
 export class LogIn implements Action {
@@ -44,11 +43,7 @@ export class LogOut implements Action {
   readonly type = UserActionTypes.LOGOUT;
 }
 
-export class GetStatus implements Action {
-  readonly type = UserActionTypes.GET_STATUS;
-}
 export type UserActions = LogIn | LogInSuccess | LogInFailure | SignUp
-| SignUpSuccess
-| SignUpFailure
-| LogOut
-| GetStatus;
+  | SignUpSuccess
+  | SignUpFailure
+  | LogOut;

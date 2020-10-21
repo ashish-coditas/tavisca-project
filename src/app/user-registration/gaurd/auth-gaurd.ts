@@ -14,10 +14,10 @@ export class AuthGuard implements CanActivate {
   ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let currentUser = false;
     const storage = sessionStorage.getItem('token');
-    if (storage) {
+    if (storage !== 'undefined' && storage !== null) {
       currentUser = true;
     }
 

@@ -4,14 +4,13 @@ import { User } from '../../models/user.model';
 export interface State {
   isAuthenticated: boolean;
   user: User | null;
-  errorMessage: string | null;
-
+  responseMessage: string | null;
 }
 
 export const initialState: State = {
   isAuthenticated: false,
   user: null,
-  errorMessage: null,
+  responseMessage: null,
 };
 
 export function reducer(state = initialState, action: UserActions): State {
@@ -23,13 +22,13 @@ export function reducer(state = initialState, action: UserActions): State {
         user: {
           email: action.payload.email
         },
-        errorMessage: 'Success'
+        responseMessage: 'Success',
       };
     }
     case UserActionTypes.LOGIN_FAILURE: {
       return {
         ...state,
-        errorMessage: action.payload
+        responseMessage: action.payload
       };
     }
     case UserActionTypes.SIGNUP_SUCCESS: {
@@ -37,15 +36,15 @@ export function reducer(state = initialState, action: UserActions): State {
         ...state,
         isAuthenticated: false,
         user: {
-          email: action.payload.email
+          email: action.payload.email,
         },
-        errorMessage: 'User Created'
+        responseMessage: 'User Created'
       };
     }
     case UserActionTypes.SIGNUP_FAILURE: {
       return {
         ...state,
-        errorMessage: action.payload
+        responseMessage: action.payload
       };
     }
     case UserActionTypes.LOGOUT: {
