@@ -16,6 +16,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Points not covered
 1. Storybook
 
+## Install project dependenciesRun 
+`npm i` to install peoject dependencies
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
