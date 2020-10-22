@@ -1,61 +1,61 @@
 <div class="modal">
-  <span class="close-icon" (click)= "closeModal.emit()"><em style="font-size: 24px" class="fa">&#xf00d;</em></span>
+  <span class="close-icon" (click)= "closeModal.emit()" aria-label="Close"><em style="font-size: 24px" class="fa">&#xf00d;</em></span>
   <div class="modal-body">
     <h2 style="text-align: center;">{{ editNew }} {{'BOOK_FORM_MODAL.BOOK_LABEL' | translate}}</h2>
-    <form [formGroup]= "bookForm" novalidate (ngSubmit)= "onSubmit(bookForm)">
+    <form [formGroup]= "bookForm" novalidate>
       <div class="row">
         <div class="column">
           <label for="isbn">{{'BOOK_FORM_MODAL.BOOK_ISBN' | translate}}</label>
-          <input type="text" formControlName="id" id="isbn" readonly />
+          <input type="text" formControlName="id" id="isbn" readonly aria-label="ISBN"/>
         </div>
         <div class="column">
           <label for="title">{{'BOOK_FORM_MODAL.BOOK_TITLE' | translate}}</label>
-          <input type="text" formControlName="title" id="title"/>
+          <input type="text" formControlName="title" id="title" aria-label="title"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="subtitle">{{'BOOK_FORM_MODAL.BOOK_SUBTITLE' | translate}}</label>
-          <input type="text" formControlName="subtitle" id="subtitle"/>
+          <input type="text" formControlName="subtitle" id="subtitle" aria-label="subtitle"/>
         </div>
         <div class="column">
           <label for="author">{{'BOOK_FORM_MODAL.BOOK_AUTHOR' | translate}}</label>
-          <input type="text" formControlName="author" id="author"/>
+          <input type="text" formControlName="author" id="author" aria-label="author"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="published">{{'BOOK_FORM_MODAL.BOOK_PUBLISHED' | translate}}</label>
-          <input type="text" formControlName="published" id="published" />
+          <input type="text" formControlName="published" id="published" aria-label="published"/>
         </div>
         <div class="column">
           <label for="publisher">{{'BOOK_FORM_MODAL.BOOK_PUBLISHER' | translate}}</label>
-          <input type="text" formControlName="publisher" id="publisher"/>
+          <input type="text" formControlName="publisher" id="publisher" aria-label="publisher"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="page">{{'BOOK_FORM_MODAL.BOOK_PAGES' | translate}}</label>
-          <input type="text" formControlName="pages" id="page"/>
+          <input type="text" formControlName="pages" id="page" aria-label="page"/>
         </div>
         <div class="column">
           <label for="description">{{'BOOK_FORM_MODAL.BOOK_DESCRIPTION' | translate}}</label>
-          <input type="text" formControlName="description" id="description"/>
+          <input type="text" formControlName="description" id="description" aria-label="description"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="website">{{'BOOK_FORM_MODAL.BOOK_WEBSITE' | translate}}</label>
-          <input type="text" formControlName="website" id="website"/>
+          <input type="text" formControlName="website" id="website" aria-label="website"/>
         </div>
       </div>
 
-      <button type="submit" class="custom_btn">{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}</button>
-      <button class="custom_cancel_button" (click)= "closeModal.emit()">{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}</button>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}" (click)= "onSubmit(bookForm)" aria-label="Save"></form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "closeModal.emit()" aria-label="Close"></form-modal-button-component>
     </form>
   </div>
 </div>

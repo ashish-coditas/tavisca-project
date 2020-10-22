@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output ,Input} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BookService } from '../../service/book-service/book.service';
 import { ToastrService } from 'ngx-toastr';
+import '../../elements/form-modal-button';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-action-book',
@@ -11,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ActionBookComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
   @Output() getData = new EventEmitter();
-  @Input() editData: any;
+  @Input() editData: any = {};
   @Input() bookForm: FormGroup;
   editNew: string;
   constructor(
@@ -38,7 +40,7 @@ export class ActionBookComponent implements OnInit {
 
   editFormData(): void {
     this.editNew = '';
-    if (this.editData.length !== 0) {
+    if (!_.isEmpty(this.editData)) {
       this.bookForm.patchValue(this.editData);
       this.editNew = 'Edit';
     } else {

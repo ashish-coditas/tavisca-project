@@ -18,7 +18,7 @@ export class BooksComponent implements OnInit {
     ];
 
   index = ['title', 'author', 'website', 'publisher'];
-  editFormData: any;
+  editFormData: any = {};
   openFormModal: boolean = false;
   bookData: any;
 
@@ -68,7 +68,7 @@ export class BooksComponent implements OnInit {
 
   closeFormModal(): void {
     this.openFormModal = false;
-    this.editFormData = [];
+    this.editFormData = {};
   }
 
   closeModal(): void {

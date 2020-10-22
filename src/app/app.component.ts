@@ -29,11 +29,9 @@ export class AppComponent implements OnInit {
       this.response = state.responseMessage;
       if (this.response !== null) {
         if (state.isAuthenticated) {
-          if (this.response === 'Success') {
             this.toastService.success('Logged In Successfully');
-          } else if (this.response === 'User Created') {
-            this.toastService.info('User Registered Successfully');
-          }
+        } else if (this.response === 'User Created') {
+          this.toastService.info('User Registered Successfully');
         } else {
           this.toastService.info(this.response.error);
         }

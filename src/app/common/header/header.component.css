@@ -79,7 +79,6 @@ input:checked + .slider:before {
 
 .logout{
   border: none;
-    background: white;
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;

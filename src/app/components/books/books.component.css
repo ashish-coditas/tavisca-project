@@ -67,11 +67,10 @@ table > td {
   margin: 20px;
 }
 
-.add-button , .btn {
+.add-button {
   float: right;
   border: none;
-  background: turquoise;
-  font-size: 20px;
+  font-size: 23px;
   cursor: pointer;
 }
 

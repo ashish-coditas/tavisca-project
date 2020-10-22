@@ -1,14 +1,10 @@
-<!-- <div class="table-class"> -->
+  <section>
   <div class="text-end">
     <span class="text-color">
       <strong>{{ 'TABLE_DETAILS.TABLE_COUNT' | translate }}
         {{ this.bookData?.length }}</strong>
     </span>
-    <span class="add-button" (click)="addBook()"
-      ><button class="btn" title="Add">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-      </button></span
-    >
+    <span class="add-button" tabindex=0 (click)= "addBook()" ><i class="fa fa-plus" aria-hidden="true" title="Add book"></i></span>
   </div>
 
   <div class= "table-class">
@@ -26,8 +22,8 @@
           <div> {{ data[col] }}</div>
           </td>
           <td>
-            <span class="actionEdit" (click)="onEdit(data.id)" title="Edit"><i class="fa fa-edit" aria-hidden="true"></i></span>
-            <span class="actionDelete" (click)="onDelete(data.id)" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            <span class="actionEdit" (click)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
+            <span class="actionDelete" (click)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
           </td>
         </tr>
       </tbody>
@@ -39,7 +35,10 @@
     [editData]="editFormData"
     (closeModal)="closeFormModal()"
     (getData)="getData()"
+    aria-label="Opens book form modal"
   ></app-action-book>
 
-  <app-delete *ngIf= "deleteForm" (closeModal)="closeModal()" (deleteModal)="deleteBook()"></app-delete>
-<!-- </div> -->
+  <app-delete *ngIf= "deleteForm" (closeModal)= "closeModal()" (deleteModal)= "deleteBook()"
+  aria-label="Opens delete book form modal"
+  ></app-delete>
+</section>

@@ -7,8 +7,8 @@
         </div>
 
         <div class="button-align">
-        <button class="custom_cancel_button" (click)= "closeModal.next()"> {{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}</button>
-        <button class= "custom_delete_button" (click)= "deleteModal.next()"> {{ 'DELETE_FORM.DELETE_BUTTON' | translate }}</button>
+          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}" (click)= "closeModal.next()"></form-modal-button-component>
+          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.DELETE_BUTTON' | translate }}" (click)= "deleteModal.next()"></form-modal-button-component>
       </div>
     </div>
   </div>
