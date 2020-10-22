@@ -12,7 +12,7 @@ export class ApiServiceService {
   handleError: any;
   constructor(private http: HttpClient) {}
 
-  login(user) {
+  login(user): Observable<any> {
     return this.http
       .post<User>(environment.loginURL, user);
   }

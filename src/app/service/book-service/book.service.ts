@@ -15,23 +15,23 @@ export class BookService {
     private httpCLient: HttpClient
   ) { }
 
-  getBook() {
+  getBook(): Observable<any> {
     return this.httpCLient.get(environment.hostURL);
   }
 
-  getBookById(id) {
+  getBookById(id): Observable<any> {
     return this.httpCLient.get(environment.hostURL + '/' + id);
   }
 
-  deleteBookById(id) {
+  deleteBookById(id): Observable<any> {
     return this.httpCLient.delete(environment.hostURL + '/' + id);
   }
 
-  addBookData(data) {
+  addBookData(data): Observable<any>{
     return this.httpCLient.post(environment.hostURL , data);
   }
 
-  updateBookData(data) {
+  updateBookData(data): Observable<any> {
     return this.httpCLient.put(environment.hostURL + '/' + data.id , data);
   }
 
