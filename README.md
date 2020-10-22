@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
-## Development covered
+## Technologies/tools and features used
 1. Login & sign-up page with api-integration.
 2. json server implemntation.
 3. lit-elements for login, registration , and form button.
