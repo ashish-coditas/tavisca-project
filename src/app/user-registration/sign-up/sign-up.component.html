@@ -1,5 +1,5 @@
 <section class="container">
-  <h2>{{'REGISTER_DETAILS.REGISTER' | translate}}</h2>
+  <h1>{{'REGISTER_DETAILS.REGISTER' | translate}}</h1>
   <form [formGroup]= "registerForm">
     <div>
       <label for="firstName"><strong>{{'REGISTER_DETAILS.FIRST_NAME' | translate}}</strong></label>
@@ -55,8 +55,8 @@
       </div>
     </div>
     <div>
-      <my-button-component buttonName= "{{'REGISTER_DETAILS.REGISTER' | translate}}" (click)= "onSubmit()"></my-button-component>
-      <my-button-component buttonName= "{{'REGISTER_DETAILS.CANCEL' | translate}}" routerLink="/login"></my-button-component>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.REGISTER' | translate}}" (click)= "onSubmit()" aria-label="Save the registred data"></my-button-component>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.CANCEL' | translate}}" routerLink="/login" aria-label="Redirect to login page on registration success"></my-button-component>
     </div>
   </form>
 </section>

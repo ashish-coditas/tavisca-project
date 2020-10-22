@@ -20,4 +20,17 @@ export class ApiServiceService {
   register(user): Observable<any> {
     return this.http.post<User>(environment.registrationURL, user);
   }
+
+
+  setToken(token) {
+    sessionStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return sessionStorage.getItem('token');
+  }
+
+  removeToken() {
+    sessionStorage.clear();
+  }
 }

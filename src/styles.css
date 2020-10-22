@@ -11,3 +11,12 @@ body , html{
   background: var(--background-default);
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.main_body {
+  min-height: calc(100vh - 60px);
+}

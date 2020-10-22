@@ -6,33 +6,33 @@
       <div class="row">
         <div class="column">
           <label for="isbn">{{'BOOK_FORM_MODAL.BOOK_ISBN' | translate}}</label>
-          <input type="text" formControlName="id" id="isbn" readonly aria-label="ISBN"/>
+          <input type="text" formControlName="id" id="isbn" readonly/>
         </div>
         <div class="column">
           <label for="title">{{'BOOK_FORM_MODAL.BOOK_TITLE' | translate}}</label>
-          <input type="text" formControlName="title" id="title" aria-label="title"/>
+          <input type="text" formControlName="title" id="title"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="subtitle">{{'BOOK_FORM_MODAL.BOOK_SUBTITLE' | translate}}</label>
-          <input type="text" formControlName="subtitle" id="subtitle" aria-label="subtitle"/>
+          <input type="text" formControlName="subtitle" id="subtitle"/>
         </div>
         <div class="column">
           <label for="author">{{'BOOK_FORM_MODAL.BOOK_AUTHOR' | translate}}</label>
-          <input type="text" formControlName="author" id="author" aria-label="author"/>
+          <input type="text" formControlName="author" id="author"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="published">{{'BOOK_FORM_MODAL.BOOK_PUBLISHED' | translate}}</label>
-          <input type="text" formControlName="published" id="published" aria-label="published"/>
+          <input type="text" formControlName="published" id="published"/>
         </div>
         <div class="column">
           <label for="publisher">{{'BOOK_FORM_MODAL.BOOK_PUBLISHER' | translate}}</label>
-          <input type="text" formControlName="publisher" id="publisher" aria-label="publisher"/>
+          <input type="text" formControlName="publisher" id="publisher"/>
         </div>
       </div>
 
@@ -43,19 +43,19 @@
         </div>
         <div class="column">
           <label for="description">{{'BOOK_FORM_MODAL.BOOK_DESCRIPTION' | translate}}</label>
-          <input type="text" formControlName="description" id="description" aria-label="description"/>
+          <input type="text" formControlName="description" id="description"/>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="website">{{'BOOK_FORM_MODAL.BOOK_WEBSITE' | translate}}</label>
-          <input type="text" formControlName="website" id="website" aria-label="website"/>
+          <input type="text" formControlName="website" id="website"/>
         </div>
       </div>
 
-      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}" (click)= "onSubmit(bookForm)" aria-label="Save"></form-modal-button-component>
-      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "closeModal.emit()" aria-label="Close"></form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}" (click)= "onSubmit(bookForm)" aria-label="Save the book form"></form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "closeModal.emit()" aria-label="Close the modal form"></form-modal-button-component>
     </form>
   </div>
 </div>

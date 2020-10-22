@@ -1,5 +1,5 @@
 <section class="login-class">
-  <h2>{{'LOGIN_DETAILS.LOGIN' | translate}}</h2>
+  <h1>{{'LOGIN_DETAILS.LOGIN' | translate}}</h1>
   <form [formGroup]= "loginForm">
     <div class = "login-form">
       <label for="email"><strong>{{ 'LOGIN_DETAILS.LOGIN_EMAIL' | translate}}</strong></label>
@@ -27,7 +27,7 @@
         <div *ngIf="f.password.errors.required">{{ 'LOGIN_DETAILS.ERROR.PASSWORD_REQUIRED' | translate}}</div>
       </div>
     </div>
-      <my-button-component buttonName= "{{'LOGIN_DETAILS.LOGIN' | translate}}" (click)="onSubmit()"></my-button-component>
-      <my-button-component buttonName= "{{ 'LOGIN_DETAILS.REGISTER' | translate}}" routerLink="/sign-up"></my-button-component>
+      <my-button-component buttonName= "{{'LOGIN_DETAILS.LOGIN' | translate}}" (click)= "onSubmit()" aria-label="login"></my-button-component>
+      <my-button-component buttonName= "{{ 'LOGIN_DETAILS.REGISTER' | translate}}" routerLink="/sign-up" aria-label="redirect to sign-up page"></my-button-component>
   </form>
 </section>

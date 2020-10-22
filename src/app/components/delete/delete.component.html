@@ -7,8 +7,8 @@
         </div>
 
         <div class="button-align">
-          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}" (click)= "closeModal.next()"></form-modal-button-component>
-          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.DELETE_BUTTON' | translate }}" (click)= "deleteModal.next()"></form-modal-button-component>
+          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.CANCEL_BUTTON' | translate }}" (click)= "closeModal.emit()" aria-label="Close the modal"></form-modal-button-component>
+          <form-modal-button-component buttonlabel="{{ 'DELETE_FORM.DELETE_BUTTON' | translate }}" (click)= "deleteModal.emit()" aria-label="Delete the selected item"></form-modal-button-component>
       </div>
     </div>
   </div>
