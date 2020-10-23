@@ -39,8 +39,8 @@ export class BooksComponent implements OnInit {
 
   getBookData(): void {
     let responseData = [];
-    const user = this.apiService.getToken();
-    const emailId = user.email;
+    const userToken = this.apiService.getToken();
+    const emailId = userToken.email;
     this.bookService.getBook().subscribe((data) => {
       responseData = data;
       this.bookData = responseData.filter(obj => obj.createdBy === emailId);
