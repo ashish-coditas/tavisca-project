@@ -4,6 +4,7 @@ import { BookService } from '../../service/book-service/book.service';
 import { ToastrService } from 'ngx-toastr';
 import '../../elements/form-modal-button';
 import * as _ from 'underscore';
+import { ApiServiceService } from '../../service/api/api-service.service';
 
 @Component({
   selector: 'app-action-book',
@@ -15,11 +16,14 @@ export class ActionBookComponent implements OnInit {
   @Output() getData = new EventEmitter();
   @Input() editData: any = {};
   @Input() bookForm: FormGroup;
+  userEmailId: string;
   editNew: string;
+
   constructor(
     private fb: FormBuilder,
     private bookService: BookService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private apiService: ApiServiceService,
   ) { }
 
   ngOnInit(): void {
@@ -33,8 +37,11 @@ export class ActionBookComponent implements OnInit {
       pages: '',
       description: '',
       website: '',
+      createdBy: '',
     });
     this.editFormData();
+    const user = this.apiService.getToken();
+    this.userEmailId = user.email;
   }
 
 
@@ -49,6 +56,7 @@ export class ActionBookComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup): void {
+    this.bookForm.value.createdBy = this.userEmailId;
     if (form.value.id === null) {
       this.bookService.addBookData(form.value).subscribe(data => {
         this.getData.emit();

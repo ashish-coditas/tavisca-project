@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../service/book-service/book.service';
 import { ToastrService } from 'ngx-toastr';
+import * as _ from 'underscore';
+import { ApiServiceService } from '../../service/api/api-service.service';
 
 @Component({
   selector: 'app-books',
@@ -24,10 +26,10 @@ export class BooksComponent implements OnInit {
 
   deleteForm: boolean = false;
   deleteId: string;
-  userAccessToken: any;
   constructor(
     private bookService: BookService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private apiService: ApiServiceService
   ) {
   }
 
@@ -36,8 +38,12 @@ export class BooksComponent implements OnInit {
   }
 
   getBookData(): void {
+    let responseData = [];
+    const userToken = this.apiService.getToken();
+    const emailId = userToken.email;
     this.bookService.getBook().subscribe((data) => {
-      this.bookData = data;
+      responseData = data;
+      this.bookData = responseData.filter(obj => obj.createdBy === emailId);
     });
   }
 
