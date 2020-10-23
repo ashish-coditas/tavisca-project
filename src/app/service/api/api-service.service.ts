@@ -22,12 +22,18 @@ export class ApiServiceService {
   }
 
 
-  setToken(token) {
-    sessionStorage.setItem('token', token);
+  setToken(token, email) {
+    const userData = {
+      token,
+      email
+    };
+    userData.token = token;
+    userData.email = email;
+    sessionStorage.setItem('userToken', JSON.stringify(userData));
   }
 
   getToken() {
-    return sessionStorage.getItem('token');
+    return JSON.parse(sessionStorage.getItem('userToken'));
   }
 
   removeToken() {

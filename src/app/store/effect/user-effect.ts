@@ -14,6 +14,7 @@ import {
   SignUpFailure,
 } from '../actions/user-actions';
 import { Observable, of } from 'rxjs';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -31,7 +32,10 @@ export class AuthEffects {
     switchMap((payload) => {
       return this.apiService.login(payload).pipe(
         map((user) => {
-          return new LogInSuccess(user);
+          const userData = new User();
+          userData.email = payload.email;
+          userData.accessToken = user;
+          return new LogInSuccess(userData);
         }),
         catchError((error) => {
           return of(new LogInFailure({ error: error.error }));
@@ -44,7 +48,7 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(UserActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      this.apiService.setToken(user.payload.accessToken);
+      this.apiService.setToken(user.payload.accessToken.accessToken , user.payload.email);
       this.router.navigate(['/books']);
     })
   );
