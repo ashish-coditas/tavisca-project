@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import '../../elements/form-modal-button';
 
 @Component({
   selector: 'app-delete',
