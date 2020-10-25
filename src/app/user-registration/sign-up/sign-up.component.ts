@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../../models/user.model';
 import { Store } from '@ngrx/store';
 import { SignUp } from '../../store/actions/user-actions';
 import { AppState } from '../../store/state/app-state';
@@ -13,7 +12,6 @@ import { AppState } from '../../store/state/app-state';
 export class SignUpComponent implements OnInit {
   registerForm: FormGroup;
   submitted:boolean = false;
-  user: User = new User();
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,

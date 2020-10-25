@@ -1,4 +1,4 @@
-<section>
+<div>
   <div class="text-end">
     <span class="text-color">
       <strong>{{ 'TABLE_DETAILS.TABLE_COUNT' | translate }}
@@ -7,7 +7,7 @@
     <span class="add-button" tabindex=0 (click)= "addBook()" ><i class="fa fa-plus" aria-hidden="true" title="Add book"></i></span>
   </div>
 
-  <div class= "table-class" *ngIf= "this.bookData?.length != 0; else noData">
+  <div class= "table-class" *ngIf= "this.bookData?.length != 0; else noData" id="book-table">
     <table>
       <thead>
         <tr>
@@ -34,15 +34,16 @@
   <p style="text-align: center;">No data available</p>
 </ng-template>
 
-  <app-action-book
-    *ngIf= "openFormModal"
-    [editData]= "editFormData"
-    (closeModal)= "closeFormModal()"
-    (getData)= "getData()"
-    aria-label= "Opens book form modal"
-  ></app-action-book>
+</div>
 
-  <app-delete *ngIf= "deleteForm" (closeModal)= "closeModal()" (deleteModal)= "deleteBook()"
-  aria-label="Opens delete book form modal"
-  ></app-delete>
-</section>
+<app-delete  *ngIf= "deleteForm"(closeModal)= "closeModal()" (deleteModal)= "deleteBook()"
+aria-label="Opens delete book form modal"
+></app-delete>
+
+<app-action-book
+*ngIf= "openFormModal"
+[editData]= "editFormData"
+(closeModal)= "closeFormModal()"
+(getData)= "getData()"
+aria-label= "Opens book form modal"
+></app-action-book>

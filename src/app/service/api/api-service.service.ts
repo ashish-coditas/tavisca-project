@@ -15,7 +15,7 @@ export class ApiServiceService {
       .post<User>(environment.loginURL, user);
   }
 
-  register(user: User): Observable<any> {
+  register(user): Observable<any> {
     return this.http.post<User>(environment.registrationURL, user);
   }
 

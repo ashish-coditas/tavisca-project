@@ -90,7 +90,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   public LogOut: Observable<any> = this.actions.pipe(
     ofType(UserActionTypes.LOGOUT),
-    tap((user) => {
+    tap(() => {
       this.apiService.removeToken();
       this.router.navigate(['/login']);
     })

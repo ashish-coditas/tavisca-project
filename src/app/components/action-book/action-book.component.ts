@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output ,Input} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BookService } from '../../service/book-service/book.service';
 import { ToastrService } from 'ngx-toastr';
-import '../../elements/form-modal-button';
 import * as _ from 'underscore';
 import { ApiServiceService } from '../../service/api/api-service.service';
 
@@ -15,19 +14,19 @@ export class ActionBookComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
   @Output() getData = new EventEmitter();
   @Input() editData: any = {};
-  @Input() bookForm: FormGroup;
+  bookForm: FormGroup;
   userEmailId: string;
   editNew: string;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private bookService: BookService,
     private toastrService: ToastrService,
     private apiService: ApiServiceService,
   ) { }
 
   ngOnInit(): void {
-    this.bookForm = this.fb.group({
+    this.bookForm = this.formBuilder.group({
       id: null,
       title: '',
       subtitle: '',

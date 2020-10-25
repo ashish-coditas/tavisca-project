@@ -1,37 +1,54 @@
-import { render } from '@testing-library/angular';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TranslateService } from '@ngx-translate/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Store } from '@ngrx/store';
+import { StoreMocks } from './store/mockStore';
+import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
-describe('AppComponent', () => {
+
+xdescribe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot(), BrowserModule, BrowserAnimationsModule
       ],
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      providers: [
+        TranslateService, ToastrService,
+        {
+          provide: Store, useValue: StoreMocks.getMockStoreService()
+        }
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
+    }).compileComponents()
   }));
 
-  it('should create the app', () => {
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'tavsica-project'`, () => {
+  test(`should have as title 'tavsica-project'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('tavsica-project');
   });
-
-  //   it('should render title', () => {
-  //     const fixture = TestBed.createComponent(AppComponent);
-  //     fixture.detectChanges();
-  //     const compiled = fixture.nativeElement;
-  //     expect(compiled.querySelector('.content span').textContent).toContain('tavsica-project app is running!');
-  //   });
-  // });
 });

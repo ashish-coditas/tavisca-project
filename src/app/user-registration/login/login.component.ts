@@ -4,9 +4,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../store/state/app-state';
 import { Observable } from 'rxjs';
 import { LogIn } from '../../store/actions/user-actions';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-import '../../elements/my-button';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +13,10 @@ import '../../elements/my-button';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted: boolean = false;
-  getState: Observable<any>;
-  loginResponse: any;
   
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,
-    private toastService: ToastrService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
