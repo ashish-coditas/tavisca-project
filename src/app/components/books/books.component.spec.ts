@@ -3,13 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BooksComponent } from './books.component';
 import {
   TranslateModule,
-  TranslateService
 } from '@ngx-translate/core';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { CUSTOM_ELEMENTS_SCHEMA ,NO_ERRORS_SCHEMA} from '@angular/core';
+import {  ToastrModule,  } from 'ngx-toastr';
 import { ApiServiceService } from '../../service/api/api-service.service';
 import { BookService } from '../../service/book-service/book.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,8 +17,9 @@ import { Store } from '@ngrx/store';
 import { StoreMocks } from '../../store/mockStore';
 import { ActionBookComponent } from '../action-book/action-book.component';
 import { DeleteComponent } from '../delete/delete.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-xdescribe('BooksComponent', () => {
+describe('BooksComponent', () => {
   let component: BooksComponent;
   let fixture: ComponentFixture<BooksComponent>;
   let bookService: BookService;
@@ -30,15 +29,14 @@ xdescribe('BooksComponent', () => {
   await TestBed.configureTestingModule({
      declarations: [
       BooksComponent,
-      ActionBookComponent,
-       DeleteComponent
+      DeleteComponent,
+       ActionBookComponent
       ]
       ,
      imports: [
        TranslateModule.forRoot(),
-       FormsModule, ReactiveFormsModule,
-       BrowserModule, BrowserAnimationsModule,
-       RouterTestingModule, HttpClientModule,
+       BrowserModule, BrowserAnimationsModule, ReactiveFormsModule,
+       RouterTestingModule, HttpClientModule,ToastrModule
      ],
 
     providers: [
@@ -47,7 +45,7 @@ xdescribe('BooksComponent', () => {
         provide: Store, useValue: StoreMocks.getMockStoreService()
       }
      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
 
     })
     .compileComponents();
@@ -58,12 +56,15 @@ xdescribe('BooksComponent', () => {
     bookService = TestBed.get(BookService);
     fixture = TestBed.createComponent(BooksComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+ 
 
   it('should get data', async(() => {
     spyOn(bookService, 'getBook').and.returnValue(of({

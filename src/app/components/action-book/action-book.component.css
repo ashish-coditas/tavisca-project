@@ -57,3 +57,25 @@ label{
 #isbn{
   background-color: #dddddd;
 }
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+	.modal-body {
+		max-height: 59vh;
+		min-height: 59vh;
+	}
+
+	.modal {
+		width: 26%;
+		min-height: 90vh;
+		max-height: 90vh;
+  }
+  
+  .row {
+    display: block;
+  }
+  
+  .column {
+    flex: 100%;
+  }
+}

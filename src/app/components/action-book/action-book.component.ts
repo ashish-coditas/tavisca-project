@@ -13,20 +13,20 @@ import { ApiServiceService } from '../../service/api/api-service.service';
 export class ActionBookComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
   @Output() getData = new EventEmitter();
-  @Input() editData: any = {};
-  @Input() bookForm: FormGroup;
+  editData: any = {};
+  bookForm: FormGroup;
   userEmailId: string;
   editNew: string;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private bookService: BookService,
     private toastrService: ToastrService,
     private apiService: ApiServiceService,
   ) { }
 
   ngOnInit(): void {
-    this.bookForm = this.fb.group({
+    this.bookForm = this.formBuilder.group({
       id: null,
       title: '',
       subtitle: '',
@@ -58,8 +58,8 @@ export class ActionBookComponent implements OnInit {
     this.bookForm.value.createdBy = this.userEmailId;
     if (form.value.id === null) {
       this.bookService.addBookData(form.value).subscribe(data => {
-        this.getData.emit();
-        this.closeModal.emit();
+        // this.getData.emit();
+        // this.closeModal.emit();
         this.toastrService.success('Saved Successfully');
       },
         error => {
@@ -68,8 +68,8 @@ export class ActionBookComponent implements OnInit {
       );
     } else {
       this.bookService.updateBookData(form.value).subscribe(data => {
-        this.getData.emit();
-        this.closeModal.emit();
+        // this.getData.emit();
+        // this.closeModal.emit();
         this.toastrService.success('Updated Successfully');
       },
       error => {

@@ -101,4 +101,8 @@ describe('LoginComponent', () => {
     component.onSubmit();
     expect(component.submitted).toBeTruthy();
   });
+
+  it('return f', () => {
+    component.f['controls'];
+  });
 });
