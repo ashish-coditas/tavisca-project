@@ -25,4 +25,4 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Jest].
+Run `npm run test:coverage` to execute the unit tests via [Jest].
