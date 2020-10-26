@@ -23,8 +23,14 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-
     this.getState = this.store.select(selectAuthState);
+  }
+
+  ngOnInit(): void {
+    this.getResponseData();
+  }
+
+  getResponseData() {
     this.getState.subscribe((state) => {
       this.response = state.responseMessage;
       if (this.response !== null) {
@@ -38,6 +44,4 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit(): void {}
 }

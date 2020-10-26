@@ -17,7 +17,7 @@ export class ActionBookComponent implements OnInit {
   bookForm: FormGroup;
   userEmailId: string;
   editNew: string;
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private bookService: BookService,
@@ -61,21 +61,13 @@ export class ActionBookComponent implements OnInit {
         this.getData.emit();
         this.closeModal.emit();
         this.toastrService.success('Saved Successfully');
-      },
-        error => {
-          console.log('error', error);
-        }
-      );
+      });
     } else {
       this.bookService.updateBookData(form.value).subscribe(data => {
         this.getData.emit();
         this.closeModal.emit();
         this.toastrService.success('Updated Successfully');
-      },
-      error => {
-        console.log('error', error);
-      }
-      );
+      });
     }
   }
 }

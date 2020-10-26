@@ -5,45 +5,43 @@ import {
   TranslateModule,
 } from '@ngx-translate/core';
 import { CUSTOM_ELEMENTS_SCHEMA ,NO_ERRORS_SCHEMA} from '@angular/core';
-import {  ToastrModule,  } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ApiServiceService } from '../../service/api/api-service.service';
 import { BookService } from '../../service/book-service/book.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import { Store } from '@ngrx/store';
 import { StoreMocks } from '../../store/mockStore';
-import { ActionBookComponent } from '../action-book/action-book.component';
-import { DeleteComponent } from '../delete/delete.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-xdescribe('BooksComponent', () => {
+describe('BooksComponent', () => {
   let component: BooksComponent;
   let fixture: ComponentFixture<BooksComponent>;
-  let bookService: BookService;
-  let apiService: ApiServiceService;
 
   beforeEach(async() => {
   await TestBed.configureTestingModule({
      declarations: [
       BooksComponent,
-      DeleteComponent,
-       ActionBookComponent
-      ]
+    ]
       ,
      imports: [
+      HttpClientModule,
        TranslateModule.forRoot(),
-       BrowserModule, BrowserAnimationsModule, ReactiveFormsModule,
-       RouterTestingModule, HttpClientModule,ToastrModule
+       BrowserAnimationsModule,
+       ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-top-center',
+        preventDuplicates: false,
+      }),
      ],
 
     providers: [
-      ApiServiceService, BookService,
       {
-        provide: Store, useValue: StoreMocks.getMockStoreService()
-      }
+        provide: ApiServiceService, useValue: StoreMocks.getApiService()
+      },
+      {
+        provide: BookService, useValue: StoreMocks.getBookService()
+      },
+      ToastrService
      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA],
 
@@ -52,11 +50,8 @@ xdescribe('BooksComponent', () => {
   });
 
   beforeEach(() => {
-    apiService = TestBed.get(ApiServiceService);
-    bookService = TestBed.get(BookService);
     fixture = TestBed.createComponent(BooksComponent);
     component = fixture.componentInstance;
-    component.ngOnInit();
     fixture.detectChanges();
   });
 
@@ -64,46 +59,51 @@ xdescribe('BooksComponent', () => {
     expect(component).toBeTruthy();
   });
 
- 
-
   it('should get data', async(() => {
-    spyOn(bookService, 'getBook').and.returnValue(of({
-      id: '9781593275846',
-      title: 'Eloquent JavaScript, Second Edition',
-      subtitle: 'A Modern Introduction to Programming',
-      author: 'Marijn',
-      published: '2014-12-14',
-      publisher: 'No Starch Press',
-      pages: 472,
-      description: 'JavaScript',
-      website: 'http://eloquentjavascript.net/'
-    }));
+    const response = [];
+    const booksData = spyOn(component['bookService'], 'getBook').and.returnValue(of(response));
     component.getBookData();
-    expect(bookService.getBook).toHaveBeenCalled();
+    expect(booksData).toHaveBeenCalled();
   }));
 
-
-  it('should return edit by data', async(() => {
-    spyOn(bookService, 'getBookById').and.returnValue(of({
-      id: '9781593275846',
-      title: 'Eloquent JavaScript, Second Edition',
-      subtitle: 'A Modern Introduction to Programming',
-      author: 'Marijn',
-      published: '2014-12-14',
-      publisher: 'No Starch Press',
-      pages: 472,
-      description: 'JavaScript',
-      website: 'http://eloquentjavascript.net/'
-    }));
-    component.onEdit('9781593275846');
-    expect(bookService.getBookById).toHaveBeenCalled();
-  }));
 
   it('should delete data', async(() => {
-    spyOn(bookService, 'deleteBookById').and.returnValue(of({
-    }));
-    component.onEdit('9781593275846');
-    expect(bookService.deleteBookById).toHaveBeenCalled();
+    const deleteData = spyOn(component['bookService'], 'deleteBookById').and.returnValue(of('8878'));
+    component.deleteBook();
+    expect(deleteData).toHaveBeenCalled();
   }));
 
+  it('should  edit data on get by id data', async(() => {
+    const editData = spyOn(component['bookService'], 'getBookById').and.returnValue(of('8878'));
+    component.onEdit('8878');
+    expect(editData).toHaveBeenCalled();
+  }));
+
+
+  it('should call delete function', async(() => {
+    component.onDelete('8878');
+    expect(component.deleteForm).toBe(true);
+    expect(component.deleteId).toBe('8878');
+  }));
+
+  it('should call addBook function', async(() => {
+    component.addBook();
+    expect(component.openFormModal).toBe(true);
+  }));
+
+  it('should call closeFormModal function', async(() => {
+    component.closeFormModal();
+    expect(component.editFormData).toEqual({});
+    expect(component.openFormModal).toBe(false);
+  }));
+
+  it('should call closeModal function', async(() => {
+    component.closeModal();
+    expect(component.deleteForm).toBe(false);
+  }));
+
+  it('should call closeModal function', async(() => {
+    component.getData();
+    expect(component.bookData.length).toBe(1);
+  }));
 });
