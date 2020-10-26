@@ -4,7 +4,7 @@
         {{ bookData?.length }}
       </strong>
     </span>
-    <span class="add-button" tabindex=0 (click)= "addBook()" ><i class="fa fa-plus" aria-hidden="true" title="Add book"></i></span>
+    <span class="add-button" tabindex=0 (click)= "addBook()" ><i class="fa fa-plus" aria-label="Click to add book data" title="Add book"></i></span>
   </div>
 
   <div class= "table-class" *ngIf= "bookData?.length != 0; else noData" id="book-table">
