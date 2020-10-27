@@ -4,8 +4,6 @@ import { AppComponent } from './app.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Store } from '@ngrx/store';
-import { StoreMocks } from './store/mockStore';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -54,25 +52,20 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  test('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
   });
 
-  test(`should have as title 'tavsica-project'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('tavsica-project');
+  it(`should have as title 'tavsica-project'`, () => {
+    expect(component.title).toEqual('tavsica-project');
   });
 
-  test('initilized store null', () => {
-  
+  it('should create response null', () => {
     component.getResponseData();
     expect(component.response).toBe(null);
   });
 
-  test(' store not null', () => {
+  it('should create isAuthenticated false', () => {
     component.getResponseData();
     expect(initialState.auth.isAuthenticated).toBe(false);
     initialState.auth.isAuthenticated = true;

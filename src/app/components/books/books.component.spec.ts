@@ -10,8 +10,8 @@ import { ApiServiceService } from '../../service/api/api-service.service';
 import { BookService } from '../../service/book-service/book.service';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreMocks } from '../../store/mockStore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreMocks } from '../../common/mock/mock-store';
 
 describe('BooksComponent', () => {
   let component: BooksComponent;
@@ -55,25 +55,26 @@ describe('BooksComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get data', async(() => {
+  it('should test get data', async(() => {
     const response = [];
-    const booksData = spyOn(component['bookService'], 'getBook').and.returnValue(of(response));
+    const spyGetBook = spyOn(component['bookService'], 'getBook').and.returnValue(of(response));
     component.getBookData();
-    expect(booksData).toHaveBeenCalled();
+    expect(spyGetBook).toHaveBeenCalled();
+    expect(component.bookData.length).toBe(0);
   }));
 
 
-  it('should delete data', async(() => {
+  it('should test delete data', async(() => {
     const deleteData = spyOn(component['bookService'], 'deleteBookById').and.returnValue(of('8878'));
     component.deleteBook();
     expect(deleteData).toHaveBeenCalled();
   }));
 
-  it('should  edit data on get by id data', async(() => {
+  it('should test get data on get by id', async(() => {
     const editData = spyOn(component['bookService'], 'getBookById').and.returnValue(of('8878'));
     component.onEdit('8878');
     expect(editData).toHaveBeenCalled();
@@ -91,18 +92,18 @@ describe('BooksComponent', () => {
     expect(component.openFormModal).toBe(true);
   }));
 
-  it('should call closeFormModal function', async(() => {
+  it('should call close book Form Modal function', async(() => {
     component.closeFormModal();
     expect(component.editFormData).toEqual({});
     expect(component.openFormModal).toBe(false);
   }));
 
-  it('should call closeModal function', async(() => {
+  it('should call close delete Modal function', async(() => {
     component.closeModal();
     expect(component.deleteForm).toBe(false);
   }));
 
-  it('should call closeModal function', async(() => {
+  it('should call close delete Modal', async(() => {
     component.getData();
     expect(component.bookData.length).toBe(1);
   }));

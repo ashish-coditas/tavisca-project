@@ -9,7 +9,9 @@ import {
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { StoreMocks } from '../../store/mockStore';
+import { StoreMocks } from '../../common/mock/mock-store';
+import { RouterModule, Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('SignUpComponent', () => {
@@ -20,13 +22,15 @@ describe('SignUpComponent', () => {
    await TestBed.configureTestingModule({
       declarations: [SignUpComponent],
       imports: [TranslateModule.forRoot(),
-      FormsModule , ReactiveFormsModule
+      FormsModule , ReactiveFormsModule, RouterTestingModule
       ],
      providers: [
        TranslateService,
         {
         provide: Store, useValue: StoreMocks.getMockStoreService()
-      }],
+       },
+       { provide: Router, useValue: StoreMocks.getMockRouterService()},
+     ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
     })
@@ -43,11 +47,11 @@ describe('SignUpComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('form invalid when empty', () => {
+  it('should test form invalid when empty', () => {
     expect(component.registerForm.valid).toBeFalsy();
   });
   
-  it('email field validity', () => {
+  it('should test email field validity', () => {
     let email = component.registerForm.controls['email'];
     expect(email.valid).toBeFalsy();
 
@@ -55,7 +59,7 @@ describe('SignUpComponent', () => {
     expect(email.hasError('required')).toBeTruthy();
   });
 
-  it('password field validity', () => {
+  it('should test password field validity', () => {
     let password = component.registerForm.controls['password'];
     expect(password.valid).toBeFalsy();
 
@@ -63,7 +67,7 @@ describe('SignUpComponent', () => {
     expect(password.hasError('required')).toBeTruthy();
   });
 
-  it('firstName field validity', () => {
+  it('should test firstName field validity', () => {
     let firstName = component.registerForm.controls['firstName'];
     expect(firstName.valid).toBeFalsy();
 
@@ -71,7 +75,7 @@ describe('SignUpComponent', () => {
     expect(firstName.hasError('required')).toBeTruthy();
   });
 
-  it('lastName field validity', () => {
+  it('should test lastName field validity', () => {
     let lastName = component.registerForm.controls['lastName'];
     expect(lastName.valid).toBeFalsy();
 
@@ -79,7 +83,7 @@ describe('SignUpComponent', () => {
     expect(lastName.hasError('required')).toBeTruthy();
   });
 
-  it('submitting a form emits', () => {
+  it('should test submitting a form emits', () => {
     const logoutSpy = spyOn(component['store'], 'dispatch');
     expect(component.registerForm.valid).toBeFalsy();
     component.registerForm.controls['email'].setValue("test@test.com");
@@ -92,7 +96,7 @@ describe('SignUpComponent', () => {
     expect(logoutSpy).toHaveBeenCalled();
   });
 
-  it('email field validity', () => {
+  it('should test email field validity', () => {
     let errors = {};
     let email = component.registerForm.controls['email'];
     expect(email.valid).toBeFalsy();
@@ -109,7 +113,7 @@ describe('SignUpComponent', () => {
     expect(errors['required']).toBeFalsy();
   });
   
-  it('password field validity', () => {
+  it('should test password field validity', () => {
     let errors = {};
     let password = component.registerForm.controls['password'];
     expect(password.valid).toBeFalsy();
@@ -122,7 +126,7 @@ describe('SignUpComponent', () => {
     expect(errors['required']).toBeFalsy();
   });
 
-  it('firstName field validity', () => {
+  it('should test firstName field validity', () => {
     let errors = {};
     let firstName = component.registerForm.controls['firstName'];
     expect(firstName.valid).toBeFalsy();
@@ -139,7 +143,7 @@ describe('SignUpComponent', () => {
     expect(errors['required']).toBeFalsy();
   });
   
-  it('lastName field validity', () => {
+  it('should test lastName field validity', () => {
     let errors = {};
     let lastName = component.registerForm.controls['lastName'];
     expect(lastName.valid).toBeFalsy();
@@ -152,7 +156,7 @@ describe('SignUpComponent', () => {
     expect(errors['required']).toBeFalsy();
   });
 
-  it('form invalid when empty', () => {
+  it('should test form invalid when empty', () => {
     component.registerForm.controls.firstName.setValue('');
     component.registerForm.controls.email.setValue('');
     component.registerForm.controls.lastName.setValue('');
@@ -160,7 +164,7 @@ describe('SignUpComponent', () => {
     expect(component.registerForm.valid).toBeFalsy();
   });
 
-  it('should set submitted to true', () => {
+  it('should test submitted to true', () => {
     component.onSubmit();
     expect(component.submitted).toBeTruthy();
   });
@@ -168,4 +172,10 @@ describe('SignUpComponent', () => {
   it('return f', () => {
     component.f['controls'];
   });
+
+  it('should navigate to login', () => {
+    const navigateSpy = spyOn(component['router'], 'navigate');
+    component.onLoginNavigate();
+    expect(navigateSpy).toHaveBeenCalledWith(['/login']);
+  })
 });

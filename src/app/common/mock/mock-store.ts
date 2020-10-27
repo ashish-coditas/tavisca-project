@@ -5,8 +5,6 @@ export class StoreMocks {
      public static getMockStoreService = () => {
           return {
                dispatch: jest.fn(() => { }),
-               pipe: jest.fn(() => of({})),
-               select: jest.fn(() => of({ })),
           }
      };
 
@@ -18,9 +16,9 @@ export class StoreMocks {
                getToken: jest.fn(() => {
                     return {
                          "email": "abc@gmail.com",
-                         "token":"hsdjfhksdbfkjs"
+                         "token": "hsdjfhksdbfkjs"
                     }
-                }),
+               }),
                removeToken: jest.fn(() => { }),
           }
      };
@@ -30,23 +28,29 @@ export class StoreMocks {
                getBook: jest.fn(() => {
                     return of([
                          {
-                         id: "EA4JwK6",
-                         title: "fd",
-                         subtitle: "fdg",
-                         author: "fdg",
-                         published: "fdgfdg",
-                         publisher: "fdgdfg",
-                         pages: "fgdfgdf",
-                         description: "fdgdf",
-                         website: "fdgdf",
-                         createdBy: "abc@gmail.com"
+                              id: "EA4JwK6",
+                              title: "fd",
+                              subtitle: "fdg",
+                              author: "fdg",
+                              published: "fdgfdg",
+                              publisher: "fdgdfg",
+                              pages: "fgdfgdf",
+                              description: "fdgdf",
+                              website: "fdgdf",
+                              createdBy: "abc@gmail.com"
                          }
                     ])
                }),
                updateBookData: jest.fn((data) => of({})),
                getBookById: jest.fn((id) => { }),
                deleteBookById: jest.fn((id) => { }),
-               addBookData: jest.fn((data) => of({ })),
+               addBookData: jest.fn((data) => of({})),
           }
      };
+
+     public static getMockRouterService = () => {
+          return {
+               navigate: jest.fn((nav) => { })
+          }
+     }
 }

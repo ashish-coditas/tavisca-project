@@ -20,7 +20,7 @@
 	min-height: 90vh;
 	max-height: 90vh;
 	overflow-x: auto;
-	background: #fff;
+	background: var(--modal-background);
 	border-radius: 4px;
 	display: flex;
 	justify-content: center;

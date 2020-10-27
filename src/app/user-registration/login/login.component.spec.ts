@@ -9,24 +9,29 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { StoreMocks } from '../../store/mockStore';
+import { StoreMocks } from '../../common/mock/mock-store';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [
       TranslateModule.forRoot(),
-      FormsModule , ReactiveFormsModule
+      FormsModule , ReactiveFormsModule, RouterTestingModule
       ],
       providers: [TranslateService , {
         provide: Store, useValue: StoreMocks.getMockStoreService()
-      }],
+      },
+      { provide: Router, useValue: StoreMocks.getMockRouterService()},
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      
 
     })
     .compileComponents();
@@ -104,5 +109,11 @@ describe('LoginComponent', () => {
 
   it('return f', () => {
     component.f['controls'];
+  });
+
+  it('should navigate to login', () => {
+      const navigateSpy = spyOn(component['router'], 'navigate');
+      component.onRegisterNavigate();
+      expect(navigateSpy).toHaveBeenCalledWith(['/sign-up']);
   });
 });

@@ -55,19 +55,19 @@ export class ActionBookComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup): void {
-    this.bookForm.value.createdBy = this.userEmailId;
-    if (form.value.id === null) {
-      this.bookService.addBookData(form.value).subscribe(data => {
-        this.getData.emit();
-        this.closeModal.emit();
-        this.toastrService.success('Saved Successfully');
-      });
-    } else {
-      this.bookService.updateBookData(form.value).subscribe(data => {
-        this.getData.emit();
-        this.closeModal.emit();
-        this.toastrService.success('Updated Successfully');
-      });
+      this.bookForm.value.createdBy = this.userEmailId;
+      if (form.value.id === null) {
+        this.bookService.addBookData(form.value).subscribe(data => {
+          this.getData.emit();
+          this.closeModal.emit();
+          this.toastrService.success('Saved Successfully');
+        });
+      } else {
+        this.bookService.updateBookData(form.value).subscribe(data => {
+          this.getData.emit();
+          this.closeModal.emit(); 
+          this.toastrService.success('Updated Successfully');
+        });
+      }
     }
-  }
 }

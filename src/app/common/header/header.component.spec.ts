@@ -10,8 +10,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ThemeService } from '../../service/theme.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/state/app-state';
-import { StoreMocks } from '../../store/mockStore';
-
+import { StoreMocks } from '../../common/mock/mock-store';
 
 
 describe('HeaderComponent', () => {
@@ -40,7 +39,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
   
-  test('logout', () => {
+  it('should logout on click', () => {
     const logoutSpy = spyOn(component['store'], 'dispatch');
     component.onLogout();
     expect(logoutSpy).toHaveBeenCalled();

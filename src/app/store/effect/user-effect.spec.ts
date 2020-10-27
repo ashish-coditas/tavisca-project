@@ -4,7 +4,7 @@ import { ApiServiceService } from '../../service/api/api-service.service';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable, empty } from 'rxjs';
 import { LogIn, LogInSuccess, LogInFailure, SignUp, SignUpSuccess, SignUpFailure, LogOut } from '../actions/user-actions';
-import {AuthEffects} from '../effect/user-effect';
+import { AuthEffects } from '../effect/user-effect';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { HttpTestingController } from '@angular/common/http/testing';
@@ -16,149 +16,123 @@ describe('Auth Effect', () => {
     let router: Router;
     let httpMock: HttpTestingController;
     let service: ApiServiceService;
-    const user1 = { email: 'ak@gmail.com', password: '123456' } 
-    beforeEach(async() => {
-      await TestBed.configureTestingModule({
-        providers: [
-              AuthEffects,
-              HttpTestingController,
-          provideMockActions(() => actions), {
-            provide: ApiServiceService,
-            useValue: {
-              login: jest.fn(),
-              registerUser: jest.fn(),
-            }
-          }
-          ],
-          imports:[RouterTestingModule]
-      });
-  
-      effects = TestBed.get(AuthEffects);
+    const mockUser = { email: 'ak@gmail.com', password: '123456' }
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            providers: [
+                AuthEffects,
+                HttpTestingController,
+                provideMockActions(() => actions), {
+                    provide: ApiServiceService,
+                    useValue: {
+                        login: jest.fn(),
+                        registerUser: jest.fn(),
+                    }
+                }
+            ],
+            imports: [RouterTestingModule]
+        });
+
+        effects = TestBed.get(AuthEffects);
         apiService = TestBed.get(ApiServiceService);
     });
 
 
-  beforeEach(
-    inject([ApiServiceService, HttpTestingController], (service$, httpMock$) => {
-      service = service$;
-      httpMock = httpMock$;
-    }));
+    beforeEach(
+        inject([ApiServiceService, HttpTestingController], (service$, httpMock$) => {
+            service = service$;
+            httpMock = httpMock$;
+        }));
 
-  
-    it('should be created', () => {
-      expect(effects).toBeTruthy();
+
+    it('effect should be created', () => {
+        expect(effects).toBeTruthy();
     });
-  
-    describe('login', () => {
-        it('should return an LogInSuccess action, with the user, on success', () => {
-        const action = new LogIn(user1);
-            const error = new Error();
-            const outcome = new LogInFailure({ error });
-            actions = hot('-a|', { a: action });
-            const response = cold('-a|', { a: user1 });
-            const expected = cold('--b|', { b: outcome });
-            apiService.login = jest.fn(() => response);
-            effects.LogIn.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(expected)
-                actionSent();
-            });
+
+    it('should return an LogInSuccess action, with the user, on success', () => {
+        const action = new LogIn(mockUser);
+        const error = new Error();
+        const outcome = new LogInFailure({ error });
+        actions = hot('-a|', { a: action });
+        const response = cold('-a|', { a: mockUser });
+        const expected = cold('--b|', { b: outcome });
+        apiService.login = jest.fn(() => response);
+        effects.LogIn.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(expected)
+            actionSent();
         });
     });
 
-    describe('logoutSuccess', () => {
-        it('should navigate and remove related data from session storage', () => {
-            const action = new LogOut();
-            const actions$ = cold('-a|', { a: action });
-            effects.LogOut.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                expect(apiService.removeToken).toBe(0);
-                expect(router.navigate).toHaveBeenCalledWith(['/login']);
-                actionSent();
-            })
-            
-        });
+    it('should navigate and remove related data from session storage', () => {
+        const action = new LogOut();
+        const actions$ = cold('-a|', { a: action });
+        effects.LogOut.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            expect(apiService.removeToken).toBe(0);
+            expect(router.navigate).toHaveBeenCalledWith(['/login']);
+            actionSent();
+        })
+
     });
-        
-        
-    describe('signup', () => {
-        it('should sign up', () => {
-            const action = new SignUp(user1);
-        const outcome = new SignUp(user1);
+
+    it('should sign up', () => {
+        const action = new SignUp(mockUser);
+        const outcome = new SignUp(mockUser);
         actions = hot('-a', { a: action });
-        const response = cold('-a|', { a: user1 });
-            const expected = cold('--b', { b: outcome });
-            
-            apiService.register = jest.fn(() => response);
-            effects.SignUp.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(expected)
-                actionSent();
-            })
-            
+        const response = cold('-a|', { a: mockUser });
+        const expected = cold('--b', { b: outcome });
+        apiService.register = jest.fn(() => response);
+        effects.SignUp.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(expected)
+            actionSent();
+        })
+    });
+
+    it('should navigate to login on sign up success', () => {
+        const action = new SignUpSuccess(mockUser);
+        const actions$ = cold('-a', { a: action });
+        effects.SignUpSuccess.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            expect(router.navigate).toHaveBeenCalledWith(['/login']);
+            actionSent();
         });
     });
 
-    describe('signupSuccess$', () => {
-        it('should navigate to login on sign up success', () => {
-            const action = new SignUpSuccess(user1);
-            const actions$ = cold('-a', { a: action });
-            effects.SignUpSuccess.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                expect(router.navigate).toHaveBeenCalledWith(['/login']);
-                actionSent();
-            })
-            
-        });
+    it('registration sucess', () => {
+        const action = new SignUpSuccess(mockUser);
+        const actions$ = cold('-a', { a: action });
+        effects.SignUpSuccess.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            actionSent();
+        })
     });
-        
-    describe('signup sucess', () => {
-        it('registration sucess', () => {
-            const action = new SignUpSuccess(user1);
-            const actions$ = cold('-a', { a: action });
-            effects.SignUpSuccess.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                actionSent();
-            })
-            
-        });
+
+    it('registration failure', () => {
+        const action = new SignUpFailure(mockUser);
+        const actions$ = cold('-a', { a: action });
+        effects.SignUpFailure.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            actionSent();
+        })
     });
-        
-        
-    describe('signup failure', () => {
-        it('registration failure', () => {
-            const action = new SignUpFailure(user1);
-            const actions$ = cold('-a', { a: action });
-            effects.SignUpFailure.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                actionSent();
-            })
-            
-        });
+
+    it('login failed', () => {
+        const action = new LogInFailure(mockUser);
+        const actions$ = cold('-a', { a: action });
+        effects.LogInFailure.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            actionSent();
+        })
     });
-        
-        
-    describe('login failure', () => {
-        it('login failed', () => {
-            const action = new LogInFailure(user1);
-            const actions$ = cold('-a', { a: action });
-            effects.LogInFailure.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                actionSent();
-            })
-            
-        });
+
+    it('login sucess', () => {
+        const action = new LogInSuccess(mockUser);
+        const actions$ = cold('-a', { a: action });
+        effects.LogInSuccess.subscribe(actionSent => {
+            expect(actionSent).toBeObservable(actions$);
+            expect(apiService.setToken('abcsdfsdfs', 'al@gmail.com')).toHaveBeenCalledWith();
+            expect(router.navigate).toHaveBeenCalledWith(['/books']);
+            actionSent();
+        })
     });
-        
-        
-    describe('login sucess', () => {
-        it('login sucess', () => {
-            const action = new LogInSuccess(user1);
-            const actions$ = cold('-a', { a: action });
-            effects.LogInSuccess.subscribe(actionSent => {
-                expect(actionSent).toBeObservable(actions$);
-                expect(apiService.setToken('abcsdfsdfs', 'al@gmail.com')).toHaveBeenCalledWith();
-                expect(router.navigate).toHaveBeenCalledWith(['/books']);
-                actionSent();
-            })
-        });
-    }); 
 });

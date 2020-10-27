@@ -8,6 +8,17 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 describe('BookService', () => {
   let service: BookService;
   let httpMock: HttpTestingController;
+  const dummyBook =  [{
+    id: '9781593275846',
+    title: 'Eloquent JavaScript, Second Edition',
+    subtitle: 'A Modern Introduction to Programming',
+    author: 'Marijn',
+    published: '2014-12-14',
+    publisher: 'No Starch Press',
+    pages: 472,
+    description: 'JavaScript',
+  website: 'http://eloquentjavascript.net/'
+  }];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -26,24 +37,12 @@ describe('BookService', () => {
       httpMock = httpMock$;
     }));
 
-  const books =  [{
-      id: '9781593275846',
-      title: 'Eloquent JavaScript, Second Edition',
-      subtitle: 'A Modern Introduction to Programming',
-      author: 'Marijn',
-      published: '2014-12-14',
-      publisher: 'No Starch Press',
-      pages: 472,
-      description: 'JavaScript',
-    website: 'http://eloquentjavascript.net/'
-    }];
-
   it('it should return books data', () => {
     service.getBook().subscribe(data => {
-        expect(data).toEqual(books);
+        expect(data).toEqual(dummyBook);
       });
     const req = httpMock.expectOne('http://localhost:3000/Books');
-    req.flush(books);
+    req.flush(dummyBook);
     httpMock.verify();
   });
 
@@ -60,7 +59,7 @@ describe('BookService', () => {
       expect(data[0].website).toEqual('http://eloquentjavascript.net/');
       });
     const req = httpMock.expectOne('http://localhost:3000/Books/0');
-    req.flush(books);
+    req.flush(dummyBook);
     httpMock.verify();
   });
 
@@ -68,9 +67,9 @@ describe('BookService', () => {
     service.addBookData({id : '9781593275846'}).subscribe(data => {
         expect(data[0].author).toEqual('Marijn');
       });
-    const req = httpMock.expectOne('http://localhost:3000/Books', books[0].author);
+    const req = httpMock.expectOne('http://localhost:3000/Books', dummyBook[0].author);
     expect(req.request.method).toBe('POST');
-    req.flush(books);
+    req.flush(dummyBook);
     httpMock.verify();
   });
 
@@ -79,7 +78,7 @@ describe('BookService', () => {
         expect(data).toEqual('');
       });
     const req = httpMock.expectOne('http://localhost:3000/Books/0');
-    req.flush(books);
+    req.flush(dummyBook);
     httpMock.verify();
   });
 });

@@ -5,4 +5,11 @@
   --footer-background: #f2f2f2;
   --table-header-background: #3498db;
   transition: all ease-in-out 400ms;
+  --color-red: red;
+  --color-blue: blue;
+  --color-white:white;
+  --color-light-grey:#ccc;
+  --color-Whisper: #eee;
+  --color-black: black;
+  --modal-background: #fff;
 }

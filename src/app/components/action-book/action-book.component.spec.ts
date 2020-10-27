@@ -1,11 +1,7 @@
-import { ComponentFixture, TestBed, async, fakeAsync, tick } from '@angular/core/testing';
-
-import {
-  TranslateModule,
-} from '@ngx-translate/core';
-
-import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { ComponentFixture, TestBed, async,} from '@angular/core/testing';
+import { TranslateModule} from '@ngx-translate/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActionBookComponent } from './action-book.component';
 import { ApiServiceService } from '../../service/api/api-service.service';
 import { BookService } from '../../service/book-service/book.service';
@@ -13,8 +9,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreMocks } from '../../store/mockStore';
-import { of, throwError, Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { StoreMocks } from '../../common/mock/mock-store';
 
 
 describe('ActionBookComponent', () => {
@@ -68,7 +64,7 @@ describe('ActionBookComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should test create component', () => {
     expect(component).toBeTruthy();
   });
 
@@ -78,7 +74,7 @@ describe('ActionBookComponent', () => {
     expect(component.editNew).toBe('New');
   }));
 
-  it('should call on Submit function', async(() => {     
+  it('should test save on submit function', async(() => {     
     component.bookForm.value.id = null;
     component.onSubmit(component.bookForm);
     spyOn(component.getData, 'emit');
@@ -93,7 +89,7 @@ describe('ActionBookComponent', () => {
   }));
 
 
-  it('should call on Submit function when id is not null', async(() => { 
+  it('should test update data on submit function', async(() => { 
     component.onSubmit(component.bookForm);
     spyOn(component.getData, 'emit');
     spyOn(component.closeModal, 'emit');

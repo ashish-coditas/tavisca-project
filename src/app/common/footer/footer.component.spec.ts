@@ -1,9 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FooterComponent } from './footer.component';
-
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {
-  TranslateLoader,
   TranslateModule,
   TranslateService
 } from '@ngx-translate/core';

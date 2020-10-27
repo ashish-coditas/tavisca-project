@@ -55,8 +55,8 @@
       </div>
     </div>
     <div>
-      <my-button-component buttonName= "{{'REGISTER_DETAILS.REGISTER' | translate}}" (click)= "onSubmit()" aria-label="Save the registred data"></my-button-component>
-      <my-button-component buttonName= "{{'REGISTER_DETAILS.CANCEL' | translate}}" routerLink="/login" aria-label="Redirect to login page on registration success"></my-button-component>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.REGISTER' | translate}}" (click)= "onSubmit()" (keyup.enter)="onSubmit()" aria-label="Save the registred data"></my-button-component>
+      <my-button-component buttonName= "{{'REGISTER_DETAILS.CANCEL' | translate}}" (keyup.enter)="onLoginNavigate()" (click)="onLoginNavigate()" aria-label="Redirect to login page on registration success"></my-button-component>
     </div>
   </form>
 </section>

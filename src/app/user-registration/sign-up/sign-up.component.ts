@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { SignUp } from '../../store/actions/user-actions';
 import { AppState } from '../../store/state/app-state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppState>,
-
+    private router: Router
   ) {
   }
 
@@ -46,5 +47,9 @@ export class SignUpComponent implements OnInit {
       lastName: this.registerForm.value.lastName
     };
     this.store.dispatch(new SignUp(payload));
+  }
+
+  onLoginNavigate() {
+    this.router.navigate(['/login']);
   }
 }

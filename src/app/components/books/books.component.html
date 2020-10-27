@@ -4,7 +4,7 @@
         {{ bookData?.length }}
       </strong>
     </span>
-    <span class="add-button" tabindex=0 (click)= "addBook()" ><i class="fa fa-plus" aria-label="Click to add book data" title="Add book"></i></span>
+    <span class="add-button" tabindex=0 (click)= "addBook()" (keyup.enter)="addBook()" ><i class="fa fa-plus" aria-label="Click to add book data" title="Add book"></i></span>
   </div>
 
   <div class= "table-class" *ngIf= "bookData?.length != 0; else noData" id="book-table">
@@ -22,8 +22,8 @@
           <div> {{ data[col] }}</div>
           </td>
           <td>
-            <span class="actionEdit" (click)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
-            <span class="actionDelete" (click)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
+            <span class="actionEdit" (click)="onEdit(data.id)" (keyup.enter)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
+            <span class="actionDelete" (click)="onDelete(data.id)" (keyup.enter)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
           </td>
         </tr>
       </tbody>
