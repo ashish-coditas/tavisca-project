@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { BookService } from '../../service/book-service/book.service';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'underscore';
@@ -12,14 +12,12 @@ import { ApiServiceService } from '../../service/api/api-service.service';
 export class BooksComponent implements OnInit {
   columns: any =
     [
-      { key: 'HEADER_TEXT_1' },
-      { key: 'HEADER_TEXT_2' },
-      { key: 'HEADER_TEXT_3' },
-      { key: 'HEADER_TEXT_4' },
-      { key: 'HEADER_TEXT_5' }
+      { key: 'HEADER_TEXT_1' , title:'title'},
+      { key: 'HEADER_TEXT_2' , title:'author'},
+      { key: 'HEADER_TEXT_3' , title:'website'},
+      { key: 'HEADER_TEXT_4', title: 'publisher' },
     ];
 
-  index = ['title', 'author', 'website', 'publisher'];
   editFormData: any = {};
   openFormModal: boolean = false;
   bookData: any;

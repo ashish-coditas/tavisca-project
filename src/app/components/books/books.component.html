@@ -8,26 +8,27 @@
   </div>
 
   <div class= "table-class" *ngIf= "bookData?.length != 0; else noData" id="book-table">
-    <table>
-      <thead>
+  <table>
+    <thead>
         <tr>
           <th *ngFor="let col of columns" title="{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}"> 
           <div>{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}</div>  
           </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor= "let data of bookData">
-          <td *ngFor="let col of index" style="cursor: pointer"  title="{{ data[col] }}">
-          <div> {{ data[col] }}</div>
-          </td>
-          <td>
-            <span class="actionEdit" (click)="onEdit(data.id)" (keyup.enter)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
-            <span class="actionDelete" (click)="onDelete(data.id)" (keyup.enter)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let data of bookData">
+        <td attr.data-col= "{{'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate}}" *ngFor="let col of columns" style="cursor: pointer"  title="{{ data[col] }}">
+        <div> {{ data[col.title] }}</div>
+        </td>
+        <td data-col="Actions">
+          <span class="actionEdit" (click)="onEdit(data.id)" (keyup.enter)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
+          <span class="actionDelete" (click)="onDelete(data.id)" (keyup.enter)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <ng-template #noData>
