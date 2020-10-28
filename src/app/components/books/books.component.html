@@ -8,10 +8,10 @@
   </div>
 
   <div class= "table-class" *ngIf= "bookData?.length != 0; else noData" id="book-table">
-  <table>
+  <table summary="Book information for author, title, website, publisher">
     <thead>
         <tr>
-          <th *ngFor="let col of columns" title="{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}"> 
+          <th scope="col" *ngFor="let col of columns" title="{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}"> 
           <div>{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}</div>  
           </th>
           <th>Actions</th>

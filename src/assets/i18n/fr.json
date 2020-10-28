@@ -15,7 +15,7 @@
       "HEADER_TEXT_1":"Titre",
       "HEADER_TEXT_2":"Auteur",
       "HEADER_TEXT_3":"Site Internet",
-      "HEADER_TEXT_4":"Publisher",
+      "HEADER_TEXT_4":"Éditeur",
       "HEADER_TEXT_5":"Editrice"
     },
     "ACTIONS_BUTTON":{
@@ -56,25 +56,25 @@
   },
   "BOOK_FORM_MODAL":{
     "BOOK_ISBN":"ISBN",
-    "BOOK_TITLE":"Title",
-    "BOOK_SUBTITLE":"Subtitle",
-    "BOOK_AUTHOR":"Author",
-    "BOOK_PUBLISHED":"Published",
-    "BOOK_PUBLISHER":"Publisher",
-    "BOOK_PAGES":"Pages",
-    "BOOK_DESCRIPTION":"Description",
-    "BOOK_WEBSITE":"Website",
-    "CANCEL_BUTTON": "Cancel",
-    "SAVE_BUTTON": "Save",
-    "BOOK_LABEL": "Book"
+    "BOOK_TITLE":"Titre",
+    "BOOK_SUBTITLE":"Sous-titre",
+    "BOOK_AUTHOR":"Auteur",
+    "BOOK_PUBLISHED":"Publié",
+    "BOOK_PUBLISHER":"Éditeur",
+    "BOOK_PAGES":"Des pages",
+    "BOOK_DESCRIPTION":"La description",
+    "BOOK_WEBSITE":"Site Internet",
+    "CANCEL_BUTTON": "Annuler",
+    "SAVE_BUTTON": "sauvegarder",
+    "BOOK_LABEL": "Livre"
   },
   "LOGOUT":{
-    "LOGOUT_TITLE": "Logout"
+    "LOGOUT_TITLE": "Se déconnecter"
   },
   "DELETE_FORM":{
-    "HEADER_TEXT": "Delete Book",
-    "BODY_TEXT": "Are you sure you want to delete this book?",
-    "CANCEL_BUTTON":"Cancel",
-    "DELETE_BUTTON": "Delete"
+    "HEADER_TEXT": "Supprimer le livre",
+    "BODY_TEXT": "Êtes-vous sûr de vouloir supprimer ce livre?",
+    "CANCEL_BUTTON":"Annuler",
+    "DELETE_BUTTON": "Effacer"
   }
 }

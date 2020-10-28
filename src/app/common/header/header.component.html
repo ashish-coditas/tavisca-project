@@ -11,6 +11,12 @@
      <span type="button" tabindex=0 (click)= "onLogout()" title="click to logout" class="logout" (keyup.enter)="onLogout()"> <i class="fa fa-sign-out" ></i>
     </span>
   </div>
+
+  <div>
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+</div>
 </div>
 </header>
 

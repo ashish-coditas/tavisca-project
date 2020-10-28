@@ -11,7 +11,7 @@ export class FormModalButtonComponent extends LitElement {
 
   static get styles(){
     return css`
-    .Save , .Cancel , .Delete{
+    .Save , .Cancel , .Delete ,.Annuler, .sauvegarder , .Effacer{
         background-color: #fff;
         color: black;
         padding: 12px 20px;
@@ -22,7 +22,7 @@ export class FormModalButtonComponent extends LitElement {
         margin: 0 5px;
         border: 1px solid darkgray;
       }
-      .Save, .Delete{
+      .Save, .Delete ,.sauvegarder , .Effacer{
         background-color: #4CAF50;
         color: #fff;
       }
