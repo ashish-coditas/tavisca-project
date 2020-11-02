@@ -39,4 +39,8 @@ export class HeaderComponent implements OnInit {
   onLogout(): void {
     this.store.dispatch(new LogOut());
   }
+
+  switchLanguage(lang:string) {
+    this.translate.use(lang);
+  }
 }

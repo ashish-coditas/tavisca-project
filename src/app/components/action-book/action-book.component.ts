@@ -69,5 +69,9 @@ export class ActionBookComponent implements OnInit {
           this.toastrService.success('Updated Successfully');
         });
       }
-    }
+  }
+  
+  onClose(){
+    this.closeModal.emit();
+  }
 }

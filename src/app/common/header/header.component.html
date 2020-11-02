@@ -13,8 +13,9 @@
   </div>
 
   <div>
-    <select #langSelect (change)="translate.use(langSelect.value)">
-      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    <select #langSelect (change)="switchLanguage($event.target.value)">
+      <option value="en">en</option>
+      <option value="fr">fr</option>
     </select>
 </div>
 </div>

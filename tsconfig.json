@@ -6,8 +6,7 @@
 */
 {
   "files": [],
-  "references": [
-    {
+  "references": [{
       "path": "./tsconfig.app.json"
     },
     {
@@ -16,6 +15,8 @@
     {
       "path": "./e2e/tsconfig.json"
     }
-],
-"inlineSourceMap": true,
+  ],
+  "inlineSourceMap": true,
+  "types": ["jest"],
+  "typeRoots": ["./src/types", "node_modules/@types"],
 }

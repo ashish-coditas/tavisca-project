@@ -1,5 +1,5 @@
 <div class="modal">
-  <span class="close-icon" (click)= "closeModal.emit()" (keyup.enter)="closeModal.emit()" aria-label="Close"><em style="font-size: 24px" class="fa">&#xf00d;</em></span>
+  <span class="close-icon" (click)= "onClose()" (keyup.enter)="onClose()" aria-label="Close"><em style="font-size: 24px" class="fa">&#xf00d;</em></span>
   <div class="modal-body">
     <h2 style="text-align: center;">{{ editNew }} {{'BOOK_FORM_MODAL.BOOK_LABEL' | translate}}</h2>
     <form [formGroup]= "bookForm" novalidate>
@@ -55,7 +55,7 @@
       </div>
 
       <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}" (click)= "onSubmit(bookForm)" (keyup.enter)="onSubmit(bookForm)" aria-label="Save the book form"></form-modal-button-component>
-      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "closeModal.emit()" (keyup.enter) ="closeModal.emit()" aria-label="Close the modal form"></form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "onClose()" (keyup.enter) ="onClose()" aria-label="Close the modal form"></form-modal-button-component>
     </form>
   </div>
 </div>
