@@ -2,18 +2,19 @@
   <a>{{'BOOK_HEADER.TITLE' | translate}}</a>
   <div class="header-right">
     <div class="space-between">
-      <label for="dark" class="toggle-switch" title="Enable dark theme" tabindex=0 >
-      <input type="checkbox" name="dark" [(ngModel)]= "dark" id="dark"/>
-      <span class="slider round"></span>
-    </label>
+      <label class="switch" for="dark" title="Enable dark theme">
+        <input type="checkbox" name="dark" [(ngModel)]="dark" id="dark" tabindex=0>
+        <span class="slider round"></span>
+      </label>
   </div>
+
    <div class="space-between">
      <span type="button" tabindex=0 (click)= "onLogout()" title="click to logout" class="logout" (keyup.enter)="onLogout()"> <i class="fa fa-sign-out" ></i>
     </span>
   </div>
 
-  <div>
-    <select #langSelect (change)="switchLanguage($event.target.value)">
+  <div class="space-between">
+    <select (change)="switchLanguage($event.target.value)">
       <option value="en">en</option>
       <option value="fr">fr</option>
     </select>

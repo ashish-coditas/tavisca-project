@@ -54,9 +54,6 @@ label{
   font-weight: 600;
   color: var(--label-text-color);
 }
-#isbn{
-  background-color: #dddddd;
-}
 
 
 @media (min-width: 320px) and (max-width: 767px) {
@@ -70,6 +67,10 @@ label{
 		min-height: 90vh;
     max-height: 90vh;
   }
+
+  :host {
+    height:100%
+  }
   
   .row {
     display: block;
@@ -78,4 +79,8 @@ label{
   .column {
     flex: 100%;
   }
+}
+
+.invalid-feedback {
+  color: #f44336;
 }

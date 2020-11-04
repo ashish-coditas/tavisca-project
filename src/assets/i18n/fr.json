@@ -76,5 +76,14 @@
     "BODY_TEXT": "Êtes-vous sûr de vouloir supprimer ce livre?",
     "CANCEL_BUTTON":"Annuler",
     "DELETE_BUTTON": "Effacer"
+  },
+  "BOOK_FORM": {
+    "ERROR": {
+      "TITLE": "Titre requis",
+      "AUTHOR": "Auteur requis",
+      "PUBLISHED": "Publié requis",
+      "PUBLISHER": "Éditeur requis",
+      "PAGES":"Entrez uniquement des chiffres"
+    }
   }
 }

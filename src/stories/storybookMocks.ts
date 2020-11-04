@@ -3,12 +3,12 @@ export class StorybookMock {
     public static getBookFormMock = () => {
         const bookForm = {
             id: null,
-            title: '',
+            title:  ['', Validators.required],
             subtitle: '',
-            author: '',
-            published: '',
-            publisher: '',
-            pages: '',
+            author:  ['', Validators.required],
+            published:  ['', Validators.required],
+            publisher:  ['', Validators.required],
+            pages: ['', Validators.pattern("^[0-9]*$")],
             description: '',
             website: '',
             createdBy: '',
