@@ -26,6 +26,14 @@ export class FormModalButtonComponent extends LitElement {
         background-color: #4CAF50;
         color: #fff;
       }
+
+      .Save:hover , .sauvegarder:hover, .Save:focus , .sauvegarder:focus{
+        background-color: #0495c9;
+      }
+
+      .Delete:hover , .Annuler:hover, .Delete:focus , .Annuler:focus {
+        background-color: red;
+      }
     `;
   }
 

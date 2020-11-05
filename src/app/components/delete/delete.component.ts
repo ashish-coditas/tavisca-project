@@ -14,4 +14,12 @@ export class DeleteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onClose() {
+    this.closeModal.emit();
+  }
+
+  onDelete() {
+    this.deleteModal.emit();
+  }
 }

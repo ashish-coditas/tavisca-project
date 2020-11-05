@@ -1,61 +1,84 @@
 <div class="modal">
-  <span class="close-icon" (click)= "closeModal.emit()" (keyup.enter)="closeModal.emit()" aria-label="Close"><em style="font-size: 24px" class="fa">&#xf00d;</em></span>
+  <span class="close-icon" (click)="onClose()" (keyup.enter)="onClose()" aria-label="Close"><em style="font-size: 24px"
+      class="fa">&#xf00d;</em></span>
   <div class="modal-body">
     <h2 style="text-align: center;">{{ editNew }} {{'BOOK_FORM_MODAL.BOOK_LABEL' | translate}}</h2>
-    <form [formGroup]= "bookForm" novalidate>
+    <form [formGroup]="bookForm" novalidate>
       <div class="row">
         <div class="column">
           <label for="isbn">{{'BOOK_FORM_MODAL.BOOK_ISBN' | translate}}</label>
-          <input type="text" formControlName="id" id="isbn" readonly/>
+          <input type="text" formControlName="id" id="isbn" disabled />
         </div>
         <div class="column">
           <label for="title">{{'BOOK_FORM_MODAL.BOOK_TITLE' | translate}}</label>
-          <input type="text" formControlName="title" id="title"/>
+          <input type="text" formControlName="title" id="title"
+            [ngClass]="{ 'is-invalid': submitted && bookFormData.title.errors }" #myinput/>
+            <div *ngIf="submitted && bookFormData.title.errors" class="invalid-feedback">
+              <div *ngIf="bookFormData.title.errors.required">{{ 'BOOK_FORM.ERROR.TITLE' | translate}}</div>
+            </div>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="subtitle">{{'BOOK_FORM_MODAL.BOOK_SUBTITLE' | translate}}</label>
-          <input type="text" formControlName="subtitle" id="subtitle"/>
+          <input type="text" formControlName="subtitle" id="subtitle" />
         </div>
         <div class="column">
           <label for="author">{{'BOOK_FORM_MODAL.BOOK_AUTHOR' | translate}}</label>
-          <input type="text" formControlName="author" id="author"/>
+          <input type="text" formControlName="author" id="author"
+            [ngClass]="{ 'is-invalid': submitted && bookFormData.author.errors }" />
+          <div *ngIf="submitted && bookFormData.author.errors" class="invalid-feedback">
+            <div *ngIf="bookFormData.author.errors.required">{{ 'BOOK_FORM.ERROR.AUTHOR' | translate}}</div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="published">{{'BOOK_FORM_MODAL.BOOK_PUBLISHED' | translate}}</label>
-          <input type="text" formControlName="published" id="published"/>
+          <input type="text" formControlName="published" id="published"
+            [ngClass]="{ 'is-invalid': submitted && bookFormData.published.errors }" />
+          <div *ngIf="submitted && bookFormData.published.errors" class="invalid-feedback">
+            <div *ngIf="bookFormData.published.errors.required">{{ 'BOOK_FORM.ERROR.PUBLISHED' | translate}}</div>
+          </div>
         </div>
         <div class="column">
           <label for="publisher">{{'BOOK_FORM_MODAL.BOOK_PUBLISHER' | translate}}</label>
-          <input type="text" formControlName="publisher" id="publisher"/>
+          <input type="text" formControlName="publisher" id="publisher"
+            [ngClass]="{ 'is-invalid': submitted && bookFormData.publisher.errors }" />
+          <div *ngIf="submitted && bookFormData.publisher.errors" class="invalid-feedback">
+            <div *ngIf="bookFormData.publisher.errors.required">{{ 'BOOK_FORM.ERROR.PUBLISHER' | translate}}</div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="page">{{'BOOK_FORM_MODAL.BOOK_PAGES' | translate}}</label>
-          <input type="text" formControlName="pages" id="page" aria-label="page"/>
+          <input type="text" formControlName="pages" id="page"/>
+          <div *ngIf="bookFormData?.pages.errors?.pattern" class="invalid-feedback">
+            <div *ngIf="bookFormData?.pages.errors?.pattern">{{ 'BOOK_FORM.ERROR.PAGES' | translate}}</div>
+          </div>
         </div>
         <div class="column">
           <label for="description">{{'BOOK_FORM_MODAL.BOOK_DESCRIPTION' | translate}}</label>
-          <input type="text" formControlName="description" id="description"/>
+          <input type="text" formControlName="description" id="description" />
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="website">{{'BOOK_FORM_MODAL.BOOK_WEBSITE' | translate}}</label>
-          <input type="text" formControlName="website" id="website"/>
+          <input type="text" formControlName="website" id="website" />
         </div>
       </div>
 
-      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}" (click)= "onSubmit(bookForm)" (keyup.enter)="onSubmit(bookForm)" aria-label="Save the book form"></form-modal-button-component>
-      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}"(click)= "closeModal.emit()" (keyup.enter) ="closeModal.emit()" aria-label="Close the modal form"></form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.SAVE_BUTTON' | translate}}"
+        (click)="onSubmit(bookForm)" (keyup.enter)="onSubmit(bookForm)" aria-label="Save the book form">
+      </form-modal-button-component>
+      <form-modal-button-component buttonlabel="{{'BOOK_FORM_MODAL.CANCEL_BUTTON' | translate}}" (click)="onClose()"
+        (keyup.enter)="onClose()" aria-label="Close the modal form"></form-modal-button-component>
     </form>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ThemeService } from '../../service/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -10,7 +10,8 @@ import { LogOut } from '../../store/actions/user-actions';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+
   get dark() {
     return this.themeService.theme === 'dark';
   }
@@ -32,11 +33,11 @@ export class HeaderComponent implements OnInit {
     translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
 
-  ngOnInit(): void {
-
-  }
-
   onLogout(): void {
     this.store.dispatch(new LogOut());
+  }
+
+  switchLanguage(lang:string) {
+    this.translate.use(lang);
   }
 }

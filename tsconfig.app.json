@@ -1,9 +1,10 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [
+      "jest"
+    ]
   },
   "files": [
     "src/main.ts",
@@ -12,5 +13,11 @@
   "include": [
     "src/**/*.d.ts"
   ],
-  "exclude": ["src/test.ts", "src/**/*.spec.ts", "**/*.stories.ts", "src/jest-config"]
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts",
+    "**/*.stories.ts",
+    "src/jest-config",
+    "**/*.stories.*"
+  ]
 }

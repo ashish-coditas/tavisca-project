@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/state/app-state';
-import { Observable } from 'rxjs';
 import { LogIn } from '../../store/actions/user-actions';
 import { Router } from '@angular/router';
 
@@ -12,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  @ViewChild("myinput") myInputField: ElementRef;
+
   loginForm: FormGroup;
   submitted: boolean = false;
   
@@ -48,5 +49,9 @@ export class LoginComponent implements OnInit {
 
   onRegisterNavigate() {
     this.router.navigate(['/sign-up']);
+  }
+
+  ngAfterViewInit() {
+    this.myInputField.nativeElement.focus();
   }
 }

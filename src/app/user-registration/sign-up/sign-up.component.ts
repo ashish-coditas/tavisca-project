@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { SignUp } from '../../store/actions/user-actions';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+  @ViewChild("myinput") myInputField: ElementRef;
+
   registerForm: FormGroup;
   submitted:boolean = false;
   constructor(
@@ -51,5 +53,9 @@ export class SignUpComponent implements OnInit {
 
   onLoginNavigate() {
     this.router.navigate(['/login']);
+  }
+
+  ngAfterViewInit() {
+    this.myInputField.nativeElement.focus();
   }
 }
