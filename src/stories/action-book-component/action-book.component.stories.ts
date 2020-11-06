@@ -8,12 +8,14 @@ import '../../web-components';
 import { ActionBookComponent } from './action-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StorybookMock } from '../storybookMocks';
+import { withKnobs, text, number, boolean, array, select, radios, color, date, button } from '@storybook/addon-knobs';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 
 storiesOf('Action Book', module)
+.addDecorator(withKnobs)
   .addDecorator(moduleMetadata({
     declarations: [
       ActionBookComponent
@@ -36,19 +38,31 @@ storiesOf('Action Book', module)
   .add('Add Book', () => ({
     component: ActionBookComponent,
     props: {
-      title: 'Action Book',
       onClose: actionsData.onClose,
       getData: actionsData.getData,
       bookForm: StorybookMock.getBookFormMock(),
       editNew: 'New',
-      onSubmit: actionsData.onSubmit
+      onSubmit: actionsData.onSubmit,
+      isbn: text('id', '9781449337711' , 'disabled'),
+      title: text('title', 'Designing Evolvable Web APIs with ASP.NE'),
+      subtitle: text('subtitle', 'Harnessing the Power of the Web'),
+      author: text('author', 'Glenn Block, et al'),
+      published: text('published', '2014-04-07'),
+      publisher: text('publisher', "O'Reilly Media"),
+      pages: number('page', 242),
+      description: text('description', 'Design and build Web APIs for a broad range'),
+      website: text('website', 'http://chimera.labs.oreilly.com/books/1234000001708/index.html'),
+      createdBy: text('createdBy', 'ashish.kapri@gmail,com', 'disabled'),
+      cancel: text('Cancel', 'Cancel'),
+      cancelButton: color('cancelButton', '#FFFFF'),
+      save: text('Save', 'Save'),
+      saveButton: color('saveButton', '#4CAF50')
     }
   })
   )
   .add('Update Book', () => ({
     component: ActionBookComponent,
     props: {
-      title: 'Action Book',
       onClose: actionsData.onClose,
       getData: actionsData.getData,
       editData: {
@@ -65,7 +79,21 @@ storiesOf('Action Book', module)
       },
       bookForm: StorybookMock.getBookFormMock(),
       editNew: 'Edit',
-      onSubmit: actionsData.onSubmit
+      onSubmit: actionsData.onSubmit,
+      isbn: text('id', '9781449337711' , 'disabled'),
+      title: text('title', 'Designing Evolvable Web APIs with ASP.NE'),
+      subtitle: text('subtitle', 'Harnessing the Power of the Web'),
+      author: text('author', 'Glenn Block, et al'),
+      published: text('published', '2014-04-07'),
+      publisher: text('publisher', "O'Reilly Media"),
+      pages: number('page', 242),
+      description: text('description', 'Design and build Web APIs for a broad range'),
+      website: text('website', 'http://chimera.labs.oreilly.com/books/1234000001708/index.html'),
+      createdBy: text('createdBy', 'ashish.kapri@gmail,com', 'disabled'),
+      cancel: text('Cancel', 'Cancel'),
+      cancelButton: color('cancelButton', '#FFFFF'),
+      save: text('Save', 'Save'),
+      saveButton: color('saveButton', '#4CAF50')
     }
   })
   );
