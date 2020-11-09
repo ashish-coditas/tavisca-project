@@ -8,12 +8,14 @@ import '../../web-components';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StorybookMock } from '../storybookMocks';
 import { LoginComponent } from './login.component';
+import { withKnobs, text, number, boolean, array, select, radios, color, date, button } from '@storybook/addon-knobs';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 
 storiesOf('User Login', module)
+.addDecorator(withKnobs)
   .addDecorator(moduleMetadata({
     declarations: [
       LoginComponent
@@ -39,14 +41,15 @@ storiesOf('User Login', module)
       title: 'Login',
       submitted: false,
       loginForm: StorybookMock.getLoginFormMock(),
-      onRegisterNavigate: actionsData.onRegisterNavigate,
-      onSubmit: actionsData.onSubmit,
+      onRegisterNavigate: action('/sign-up'),
+      onSubmit: action('submit'),
     }
+  }))
+  .add('form feild', () => ({
+    component: LoginComponent,
+    props: {
+      email: text('email', ''),
+      password: text('password', ''),
+    },
   })
   );
-
-
-export const actionsData = {
-  onRegisterNavigate: action('/sign-up'),
-  onSubmit: action('submit')
-};
