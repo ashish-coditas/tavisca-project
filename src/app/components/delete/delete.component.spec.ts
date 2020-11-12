@@ -29,4 +29,12 @@ describe('DeleteComponent', () => {
   test('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  test('should call delete', () => {
+    component.onClose()
+  });
+
+  test('should call close', () => {
+    component.onDelete();
+  });
 });

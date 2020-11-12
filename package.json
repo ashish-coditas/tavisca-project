@@ -86,8 +86,7 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/",
-      "!/src/app/store/mockStore.ts",
-      "!/src/app/components/books/books.component.spec.ts"
+      "!/src/app/store/mockStore.ts"
     ]
   }
 }

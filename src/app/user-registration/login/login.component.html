@@ -3,7 +3,7 @@
   <form [formGroup]= "loginForm">
     <div class = "login-form">
       <label for="email"><strong>{{ 'LOGIN_DETAILS.LOGIN_EMAIL' | translate}}</strong></label>
-      <my-input-component (val-change)="onEmailInput($event.detail.value)" #myinput inputType='text' textId='email'></my-input-component>
+      <my-input-component (val-change)="onEmailInput($event.detail.value)" inputType='text' textId='email'></my-input-component>
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">{{ 'LOGIN_DETAILS.ERROR.EMAIL_REQUIRED' | translate}}</div>
       </div>

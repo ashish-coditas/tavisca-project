@@ -11,7 +11,6 @@ import { ApiServiceService } from '../../service/api/api-service.service';
   styleUrls: ['./action-book.component.css']
 })
 export class ActionBookComponent implements OnInit {
-  @ViewChild("myinput") myInputField: ElementRef;
   @Output() closeModal = new EventEmitter();
   @Output() getData = new EventEmitter();
   @Input() editData: any = {};
@@ -87,10 +86,6 @@ export class ActionBookComponent implements OnInit {
   
   onClose(){
     this.closeModal.emit();
-  }
-
-  ngAfterViewInit() {
-    this.myInputField.nativeElement.shadowRoot;
   }
 
   onISBNInput(text) {

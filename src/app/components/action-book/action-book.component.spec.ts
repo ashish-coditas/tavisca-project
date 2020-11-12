@@ -101,4 +101,40 @@ describe('ActionBookComponent', () => {
     expect(component.closeModal.emit).toHaveBeenCalledTimes(0);
     expect(updateData).toHaveBeenCalledTimes(0);
   }));
+
+  it('should enter login text', () => {
+    component.onISBNInput('1234562333');
+  });
+
+  it('should enter password text', () => {
+    component.onTitleInput('test');
+  });
+
+  it('should enter firstname text', () => {
+    component.onSubtitleInput('test');
+  });
+
+  it('should enter lastname text', () => {
+    component.onAuthorInput('test');
+  });
+
+  it('should enter login text', () => {
+    component.onPublishedInput('test');
+  });
+
+  it('should enter password text', () => {
+    component.onPublisherInput('test');
+  });
+
+  it('should enter firstname text', () => {
+    component.onPageInput('test');
+  });
+
+  it('should enter lastname text', () => {
+    component.onDescriptionInput('test');
+  });
+
+  it('should enter lastname text', () => {
+    component.onWebsiteInput('test');
+  });
 });

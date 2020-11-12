@@ -178,4 +178,20 @@ describe('SignUpComponent', () => {
     component.onLoginNavigate();
     expect(navigateSpy).toHaveBeenCalledWith(['/login']);
   })
+
+  it('should enter login text', () => {
+    component.onEmailInput('test@gmail.com');
+  });
+
+  it('should enter password text', () => {
+    component.onPasswordInput('123456');
+  });
+
+  it('should enter firstname text', () => {
+    component.onFirstNameInput('test');
+  });
+
+  it('should enter lastname text', () => {
+    component.onLastNameInput('test');
+  });
 });

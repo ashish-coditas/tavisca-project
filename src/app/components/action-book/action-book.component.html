@@ -11,7 +11,7 @@
         </div>
         <div class="column">
           <label for="title">{{'BOOK_FORM_MODAL.BOOK_TITLE' | translate}}</label>
-            <my-form-input-component (val-change)="onTitleInput($event.detail.value)" #myinput inputType='text' inputValue="{{editData?.title}}" textId="title"></my-form-input-component>
+            <my-form-input-component (val-change)="onTitleInput($event.detail.value)" inputType='text' inputValue="{{editData?.title}}" textId="title"></my-form-input-component>
             <div *ngIf="submitted && bookFormData.title.errors" class="invalid-feedback">
               <div *ngIf="bookFormData.title.errors.required">{{ 'BOOK_FORM.ERROR.TITLE' | translate}}</div>
             </div>

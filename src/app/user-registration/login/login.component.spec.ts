@@ -116,4 +116,18 @@ describe('LoginComponent', () => {
       component.onRegisterNavigate();
       expect(navigateSpy).toHaveBeenCalledWith(['/sign-up']);
   });
+
+  it('should navigate to login', () => {
+    const navigateSpy = spyOn(component['router'], 'navigate');
+    component.onRegisterNavigate();
+    expect(navigateSpy).toHaveBeenCalledWith(['/sign-up']);
+  });
+
+  it('should enter login text', () => {
+    component.onEmailInput('test@gmail.com');
+  });
+
+  it('should enter password text', () => {
+    component.onPasswordInput('123456');
+  });
 });
