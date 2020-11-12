@@ -58,4 +58,20 @@ export class SignUpComponent implements OnInit {
   ngAfterViewInit() {
     this.myInputField.nativeElement.focus();
   }
+
+  onFirstNameInput(text) {
+    this.registerForm.controls['firstName'].setValue(text);
+  }
+
+  onLastNameInput(text) {
+    this.registerForm.controls['lastName'].setValue(text);
+  }
+
+  onEmailInput(text) {
+    this.registerForm.controls['email'].setValue(text);
+  }
+
+  onPasswordInput(text) {
+    this.registerForm.controls['password'].setValue(text);
+  }
 }

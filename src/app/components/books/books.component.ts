@@ -12,10 +12,10 @@ import { ApiServiceService } from '../../service/api/api-service.service';
 export class BooksComponent implements OnInit {
   columns: any =
     [
-      { key: 'HEADER_TEXT_1' , title:'title'},
-      { key: 'HEADER_TEXT_2' , title:'author'},
-      { key: 'HEADER_TEXT_3' , title:'website'},
-      { key: 'HEADER_TEXT_4', title: 'publisher' },
+      { key: 'Title' , title:'Title'},
+      { key: 'Author' , title:'Author'},
+      { key: 'Website' , title:'Website'},
+      { key: 'Publisher', title: 'Publisher' },
     ];
 
   editFormData: any = {};
@@ -39,7 +39,6 @@ export class BooksComponent implements OnInit {
     let responseData = [];
     const userToken = this.apiService.getToken();
     const emailId = userToken.email;
-    console.log('emailId', emailId);
     this.bookService.getBook().subscribe((data) => {
       responseData = data;
       this.bookData = responseData.filter(obj => obj.createdBy === emailId);

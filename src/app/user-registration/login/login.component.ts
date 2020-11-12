@@ -51,6 +51,14 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/sign-up']);
   }
 
+  onEmailInput(text) {
+    this.loginForm.controls['email'].setValue(text);
+  }
+
+  onPasswordInput(text) {
+    this.loginForm.controls['password'].setValue(text);
+  }
+
   ngAfterViewInit() {
     this.myInputField.nativeElement.focus();
   }

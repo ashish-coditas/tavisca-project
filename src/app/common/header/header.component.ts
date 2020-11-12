@@ -12,14 +12,11 @@ import { LogOut } from '../../store/actions/user-actions';
 })
 export class HeaderComponent {
 
-  get dark() {
-    return this.themeService.theme === 'dark';
-  }
 
-  set dark(enabled: boolean) {
-    this.themeService.theme = enabled ? 'dark' : null;
-  }
-
+  languageOption = [
+    { text: 'en', value: 'en' },
+    { text: 'fr', value: 'fr' }
+  ]
   constructor(
     private themeService: ThemeService,
     public translate: TranslateService,
@@ -37,7 +34,24 @@ export class HeaderComponent {
     this.store.dispatch(new LogOut());
   }
 
-  switchLanguage(lang:string) {
+  switchLanguage(lang: string) {
     this.translate.use(lang);
+  }
+
+
+  getdark() {
+    return this.themeService.theme === 'dark';
+  }
+
+  setdark(enabled: boolean) {
+    this.themeService.theme = enabled ? 'dark' : null;
+  }
+
+  onChangeTheme(event) {
+    if (event) {
+      this.setdark(true);
+    } else {
+      this.setdark(false);
+    }
   }
 }

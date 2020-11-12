@@ -90,6 +90,42 @@ export class ActionBookComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.myInputField.nativeElement.focus();
+    this.myInputField.nativeElement.shadowRoot;
+  }
+
+  onISBNInput(text) {
+    this.bookForm.controls['id'].setValue(text);
+  }
+
+  onTitleInput(text) {
+    this.bookForm.controls['title'].setValue(text);
+  }
+
+  onSubtitleInput(text) {
+    this.bookForm.controls['subtitle'].setValue(text);
+  }
+
+  onAuthorInput(text) {
+    this.bookForm.controls['author'].setValue(text);
+  }
+
+  onPublishedInput(text) {
+    this.bookForm.controls['published'].setValue(text);
+  }
+
+  onPublisherInput(text) {
+    this.bookForm.controls['publisher'].setValue(text);
+  }
+
+  onPageInput(text) {
+    this.bookForm.controls['pages'].setValue(text);
+  }
+
+  onDescriptionInput(text) {
+    this.bookForm.controls['description'].setValue(text);
+  }
+
+  onWebsiteInput(text) {
+    this.bookForm.controls['website'].setValue(text);
   }
 }

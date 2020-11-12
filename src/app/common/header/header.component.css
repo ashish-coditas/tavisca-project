@@ -2,83 +2,19 @@
 @import '../../../assets/theme/base.css';
 @import '../../../assets/theme/default.css';
 
-.header-right {
+#custom-header.header-right {
   float: right;
   display: flex;
 }
 
-header {
-  overflow: hidden;
-  background-color: var(--header-background);
+#custom-header{
+  display: inline-flex;
+  background: var(--header-background);
+  width: 100%;
   padding: 20px 10px;
-  color: #fff;
-}
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 25px;
-}
-
-.switch input { 
-  opacity: 1;
-  width: 33px;
-  height: 20px;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 3px black;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(15px);
-  -ms-transform: translateX(15px);
-  transform: translateX(15px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 .space-between{
-  margin: 0 10px;
-}
-
-.logout{
-  border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
+  margin: 0 25px;
+  display: inline-flex;
 }

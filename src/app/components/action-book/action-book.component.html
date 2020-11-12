@@ -7,12 +7,11 @@
       <div class="row">
         <div class="column">
           <label for="isbn">{{'BOOK_FORM_MODAL.BOOK_ISBN' | translate}}</label>
-          <input type="text" formControlName="id" id="isbn" disabled />
+          <my-form-input-component (val-change)="onISBNInput($event.detail.value)" inputType='text' disabled=true inputValue="{{editData?.id}}"></my-form-input-component>
         </div>
         <div class="column">
           <label for="title">{{'BOOK_FORM_MODAL.BOOK_TITLE' | translate}}</label>
-          <input type="text" formControlName="title" id="title"
-            [ngClass]="{ 'is-invalid': submitted && bookFormData.title.errors }" #myinput/>
+            <my-form-input-component (val-change)="onTitleInput($event.detail.value)" #myinput inputType='text' inputValue="{{editData?.title}}" textId="title"></my-form-input-component>
             <div *ngIf="submitted && bookFormData.title.errors" class="invalid-feedback">
               <div *ngIf="bookFormData.title.errors.required">{{ 'BOOK_FORM.ERROR.TITLE' | translate}}</div>
             </div>
@@ -22,12 +21,11 @@
       <div class="row">
         <div class="column">
           <label for="subtitle">{{'BOOK_FORM_MODAL.BOOK_SUBTITLE' | translate}}</label>
-          <input type="text" formControlName="subtitle" id="subtitle" />
+          <my-form-input-component (val-change)="onSubtitleInput($event.detail.value)" inputType='text' inputValue="{{editData?.subtitle}}"></my-form-input-component>
         </div>
         <div class="column">
           <label for="author">{{'BOOK_FORM_MODAL.BOOK_AUTHOR' | translate}}</label>
-          <input type="text" formControlName="author" id="author"
-            [ngClass]="{ 'is-invalid': submitted && bookFormData.author.errors }" />
+          <my-form-input-component (val-change)="onAuthorInput($event.detail.value)" inputType='text' inputValue="{{editData?.author}}"></my-form-input-component>
           <div *ngIf="submitted && bookFormData.author.errors" class="invalid-feedback">
             <div *ngIf="bookFormData.author.errors.required">{{ 'BOOK_FORM.ERROR.AUTHOR' | translate}}</div>
           </div>
@@ -37,16 +35,14 @@
       <div class="row">
         <div class="column">
           <label for="published">{{'BOOK_FORM_MODAL.BOOK_PUBLISHED' | translate}}</label>
-          <input type="text" formControlName="published" id="published"
-            [ngClass]="{ 'is-invalid': submitted && bookFormData.published.errors }" />
+          <my-form-input-component (val-change)="onPublishedInput($event.detail.value)" inputType='text' inputValue="{{editData?.published}}"></my-form-input-component>
           <div *ngIf="submitted && bookFormData.published.errors" class="invalid-feedback">
             <div *ngIf="bookFormData.published.errors.required">{{ 'BOOK_FORM.ERROR.PUBLISHED' | translate}}</div>
           </div>
         </div>
         <div class="column">
           <label for="publisher">{{'BOOK_FORM_MODAL.BOOK_PUBLISHER' | translate}}</label>
-          <input type="text" formControlName="publisher" id="publisher"
-            [ngClass]="{ 'is-invalid': submitted && bookFormData.publisher.errors }" />
+          <my-form-input-component (val-change)="onPublisherInput($event.detail.value)" inputType='text' inputValue="{{editData?.publisher}}"></my-form-input-component>
           <div *ngIf="submitted && bookFormData.publisher.errors" class="invalid-feedback">
             <div *ngIf="bookFormData.publisher.errors.required">{{ 'BOOK_FORM.ERROR.PUBLISHER' | translate}}</div>
           </div>
@@ -56,21 +52,21 @@
       <div class="row">
         <div class="column">
           <label for="page">{{'BOOK_FORM_MODAL.BOOK_PAGES' | translate}}</label>
-          <input type="text" formControlName="pages" id="page"/>
+          <my-form-input-component (val-change)="onPageInput($event.detail.value)" inputType='text' inputValue="{{editData?.pages}}"></my-form-input-component>
           <div *ngIf="bookFormData?.pages.errors?.pattern" class="invalid-feedback">
             <div *ngIf="bookFormData?.pages.errors?.pattern">{{ 'BOOK_FORM.ERROR.PAGES' | translate}}</div>
           </div>
         </div>
         <div class="column">
           <label for="description">{{'BOOK_FORM_MODAL.BOOK_DESCRIPTION' | translate}}</label>
-          <input type="text" formControlName="description" id="description" />
+          <my-form-input-component (val-change)="onDescriptionInput($event.detail.value)" inputType='text' inputValue="{{editData?.description}}"></my-form-input-component>
         </div>
       </div>
 
       <div class="row">
         <div class="column">
           <label for="website">{{'BOOK_FORM_MODAL.BOOK_WEBSITE' | translate}}</label>
-          <input type="text" formControlName="website" id="website" />
+          <my-form-input-component (val-change)="onWebsiteInput($event.detail.value)" inputType='text' inputValue="{{editData?.website}}"></my-form-input-component>
         </div>
       </div>
 
