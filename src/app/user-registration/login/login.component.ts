@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @ViewChild("myinput") myInputField: ElementRef;
-
   loginForm: FormGroup;
   submitted: boolean = false;
   
@@ -51,7 +49,11 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/sign-up']);
   }
 
-  ngAfterViewInit() {
-    this.myInputField.nativeElement.focus();
+  onEmailInput(text) {
+    this.loginForm.controls['email'].setValue(text);
+  }
+
+  onPasswordInput(text) {
+    this.loginForm.controls['password'].setValue(text);
   }
 }

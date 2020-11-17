@@ -34,13 +34,6 @@
   cursor: pointer;
 }
 
-input {
-  width: 100%;
-  padding: 12px 50px 12px 15px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-
 .row {
   display: flex;
 }

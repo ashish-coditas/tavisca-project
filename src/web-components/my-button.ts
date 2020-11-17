@@ -46,7 +46,6 @@ export class MyButtonComponent extends LitElement {
   render() {
     return html`
       <button class="${this.buttonName}" @click="${this._handleClick}">${this.buttonName}</button>
-      <slot></slot>
     `;
   }
 

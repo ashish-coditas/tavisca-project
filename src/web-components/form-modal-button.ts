@@ -40,7 +40,6 @@ export class FormModalButtonComponent extends LitElement {
   render() {
     return html`
       <button class="${this.buttonlabel}" @click="${this._handleClick}">${this.buttonlabel}</button>
-      <slot></slot>
     `;
   }
 

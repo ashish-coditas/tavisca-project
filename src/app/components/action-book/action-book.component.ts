@@ -11,7 +11,6 @@ import { ApiServiceService } from '../../service/api/api-service.service';
   styleUrls: ['./action-book.component.css']
 })
 export class ActionBookComponent implements OnInit {
-  @ViewChild("myinput") myInputField: ElementRef;
   @Output() closeModal = new EventEmitter();
   @Output() getData = new EventEmitter();
   @Input() editData: any = {};
@@ -89,7 +88,39 @@ export class ActionBookComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  ngAfterViewInit() {
-    this.myInputField.nativeElement.focus();
+  onISBNInput(text) {
+    this.bookForm.controls['id'].setValue(text);
+  }
+
+  onTitleInput(text) {
+    this.bookForm.controls['title'].setValue(text);
+  }
+
+  onSubtitleInput(text) {
+    this.bookForm.controls['subtitle'].setValue(text);
+  }
+
+  onAuthorInput(text) {
+    this.bookForm.controls['author'].setValue(text);
+  }
+
+  onPublishedInput(text) {
+    this.bookForm.controls['published'].setValue(text);
+  }
+
+  onPublisherInput(text) {
+    this.bookForm.controls['publisher'].setValue(text);
+  }
+
+  onPageInput(text) {
+    this.bookForm.controls['pages'].setValue(text);
+  }
+
+  onDescriptionInput(text) {
+    this.bookForm.controls['description'].setValue(text);
+  }
+
+  onWebsiteInput(text) {
+    this.bookForm.controls['website'].setValue(text);
   }
 }

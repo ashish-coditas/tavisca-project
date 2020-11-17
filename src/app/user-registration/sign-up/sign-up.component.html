@@ -3,51 +3,28 @@
   <form [formGroup]= "registerForm">
     <div>
       <label for="firstName"><strong>{{'REGISTER_DETAILS.FIRST_NAME' | translate}}</strong></label>
-      <input
-      #myinput
-      id="firstName"
-        type="text"
-        formControlName="firstName"
-        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-      />
+      <my-input-component inputType='text' (val-change)="onFirstNameInput($event.detail.value)" textId='firstName'></my-input-component>
       <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
         <div *ngIf="f.firstName.errors.required">{{'REGISTER_DETAILS.FIRST_NAME' | translate}}</div>
       </div>
     </div>
     <div>
       <label for="lastName"><strong>{{'REGISTER_DETAILS.LAST_NAME' | translate}}</strong></label>
-      <input
-      id="lastName"
-        type="text"
-        formControlName="lastName"
-        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-      />
+      <my-input-component inputType='text' (val-change)="onLastNameInput($event.detail.value)"></my-input-component>
       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
         <div *ngIf="f.lastName.errors.required">{{'REGISTER_DETAILS.ERROR.LAST_NAME_REQUIRED' | translate}}</div>
       </div>
     </div>
     <div>
       <label for="email"><strong>{{'REGISTER_DETAILS.REGISTER_EMAIL' | translate}}</strong></label>
-      <input
-      id="email"
-        type="text"
-        formControlName="email"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-      />
+      <my-input-component inputType='text' (val-change)="onEmailInput($event.detail.value)"></my-input-component>
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">{{'REGISTER_DETAILS.ERROR.EMAIL_REQUIRED' | translate}}</div>
       </div>
     </div>
     <div>
       <label for="password"><strong>{{'REGISTER_DETAILS.REGISTER_PASSWORD' | translate}}</strong></label>
-      <input
-      id="password"
-        type="password"
-        formControlName="password"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-      />
+      <my-input-component inputType='password' (val-change)="onPasswordInput($event.detail.value)"></my-input-component>
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
         <div *ngIf="f.password.errors.required">{{'REGISTER_DETAILS.ERROR.PASSWORD_REQUIRED' | translate}}</div>
         <div *ngIf="f.password.errors.minlength">

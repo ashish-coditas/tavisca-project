@@ -4,32 +4,17 @@
         {{ bookData?.length }}
       </strong>
     </span>
-    <span class="add-button" tabindex=0 (click)= "addBook()" (keyup.enter)="addBook()" ><i class="fa fa-plus" aria-label="Click to add book data" title="Add book"></i></span>
+    <button class="add-button" tabindex=0 (click)= "addBook()"><i class="fa fa-plus" aria-label="Click to add book data" title="Add book"></i></button>
   </div>
 
   <div class= "table-class" *ngIf= "bookData?.length != 0; else noData" id="book-table">
-  <table summary="Book information for author, title, website, publisher">
-    <thead>
-        <tr>
-          <th scope="col" *ngFor="let col of columns" title="{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}"> 
-          <div>{{ 'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate }}</div>  
-          </th>
-          <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor= "let data of bookData">
-        <td attr.data-col= "{{'TABLE_DETAILS.TABLE_HEADER.' + col.key | translate}}" *ngFor="let col of columns" style="cursor: pointer"  title="{{ data[col] }}">
-        <div> {{ data[col.title] }}</div>
-        </td>
-        <td data-col="Actions">
-          <span class="actionEdit" (click)="onEdit(data.id)" (keyup.enter)="onEdit(data.id)" title="Edit" tabindex=0><i class="fa fa-edit" aria-hidden="true"></i></span>
-          <span class="actionDelete" (click)="onDelete(data.id)" (keyup.enter)="onDelete(data.id)" title="Delete" tabindex=0><i class="fa fa-trash" aria-hidden="true"></i></span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <my-table-component 
+    [dataTable]="bookData" 
+    [columnName]="columns" 
+    (edit)="onEdit($event.detail.editId)"
+    (delete)="onDelete($event.detail.deleteId)"
+    ></my-table-component>
+  </div>
 
 <ng-template #noData>
   <p style="text-align: center;">No data available</p>
